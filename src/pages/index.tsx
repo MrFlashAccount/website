@@ -9,6 +9,11 @@ const IndexPage = () => {
         <html lang="en" itemType="https://schema.org/Person" itemScope />
         <title>Sergey Garin</title>
         <link
+          href="https://res.cloudinary.com/"
+          crossOrigin="anonymous"
+          rel="preconnect"
+        />
+        <link
           rel="icon"
           href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧑🏻‍💻</text></svg>"
         />
