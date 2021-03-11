@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import { StaticImage } from "gatsby-plugin-image";
 import { CssBaseline, Link } from "../components";
 
 const IndexPage = () => {
@@ -32,14 +33,13 @@ const IndexPage = () => {
       >
         <main>
           <div className="pt-16 pb-8 flex flex-col items-center text-center">
-            <img
+            <StaticImage
               className="w-24 md:w-48 rounded-full object-cover"
-              height="32"
-              width="32"
+              src="../images/my-photo.jpg"
+              width={192}
+              height={192}
               alt=""
               role="presentation"
-              srcSet="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_auto,q_auto,w_92,dpr_2.0/v1615478867/garin.dev/me.jpg 2x"
-              src="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_auto,q_auto,w_192/v1615478867/garin.dev/me.jpg"
             />
             <h1 className="font-semibold md:text-5xl text-4xl text-gray-800 pt-8 pb-8">
               Hi! My name is{" "}
