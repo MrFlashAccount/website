@@ -38,7 +38,7 @@ const IndexPage = () => {
               width="192"
               alt=""
               role="presentation"
-              srcSet="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_auto,q_auto,w_92,dpr_2.0/v1615478867/garin.dev/me.jpg 2x"
+              srcSet="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_auto,q_auto,w_192,dpr_2.0/v1615478867/garin.dev/me.jpg 2x"
               src="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_auto,q_auto,w_192/v1615478867/garin.dev/me.jpg"
             />
             <h1 className="font-semibold md:text-5xl text-4xl text-gray-800 pt-8 pb-8">
