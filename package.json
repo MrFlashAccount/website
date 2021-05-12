@@ -33,7 +33,7 @@
     "gatsby-plugin-sass": "^4.0.2",
     "gatsby-plugin-sitemap": "3.0.0",
     "gatsby-source-filesystem": "^3.0.0",
-    "postcss": "8.2.8",
+    "postcss": "8.2.10",
     "prettier": "2.2.1",
     "sass": "^1.32.8"
   },
