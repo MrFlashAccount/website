@@ -1,7 +1,0 @@
-.link {
-  @apply underline;
-  @apply focus:outline-none focus:ring-2;
-  @apply transition-transform transition-colors;
-  @apply hover:text-blue-700;
-  @apply transform-gpu hover:-translate-y-0.5;
-}

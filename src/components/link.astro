@@ -1,0 +1,16 @@
+---
+import clsx from 'clsx';
+const { class: className, ...rest } = Astro.props;
+---
+<a {...rest} class={clsx(
+  'underline',
+  'focus:outline-none', 
+  'focus:ring-2',
+  'transition-transform', 
+  'hover:text-blue-700',
+  'transform-gpu', 
+  'hover:-translate-y-0.5',
+  className 
+)}>
+  <slot />
+</a>
