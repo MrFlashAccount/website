@@ -1,0 +1,32 @@
+---
+import '../styles/global.css';
+
+const favicon = process.env.NODE_ENV === 'production' ? '/favicon.svg' : '/favicon-dev.svg';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sergey Garin</title>
+    <link
+      href="https://res.cloudinary.com/"
+      crossorigin="anonymous"
+      rel="preconnect"
+    />
+    <meta name="description" content="My contacts and cv" />
+    <link itemprop="url" href="https://garin.dev" />
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href={favicon} type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="author" content="Sergey Garin" />
+    <meta property="og:title" content="Sergey Garin" />
+    <meta property="og:description" content="My contacts and cv" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:site_name" content="Sergey Garin" />
+  </head> 
+  <body>
+    <slot />
+  </body>
+</html>
