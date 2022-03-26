@@ -1,16 +1,17 @@
 ---
 import clsx from 'clsx';
-const { class: className, ...rest } = Astro.props;
+
+const { class: className, roundRadius, ...rest } = Astro.props;
 ---
 <a {...rest} class={clsx(
   'underline',
+  roundRadius ? `rounded-${roundRadius}` : 'rounded',
   'focus:outline-none', 
   'focus:ring-2',
-  'transition-transform', 
+  'focus:ring-blue-500',
+  'focus:ring-offset-2',
+  'transition-color',
+  'transition-shadow', 
   'hover:text-blue-700',
-  'transform-gpu', 
-  'hover:-translate-y-0.5',
   className 
-)}>
-  <slot />
-</a>
+)}><slot /></a>
