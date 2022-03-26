@@ -6,15 +6,23 @@ import MainLayout from 'layouts/main.astro';
   <div role="presentation" class="max-w-screen-md mx-auto pl-8 pr-8 pb-8">
     <main>
       <div class="pt-16 pb-8 flex flex-col items-center text-center">
-        <img
-          class="w-24 md:w-48 rounded-full object-cover"
-          height="192"
-          width="192"
-          alt=""
-          role="presentation"
-          srcset="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_auto,q_auto,w_192,dpr_2.0/v1615478867/garin.dev/me.jpg 2x"
-          src="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_auto,q_auto,w_192/v1615478867/garin.dev/me.jpg"
-        />
+        <Link roundRadius="full" class="hover:ring-4 hover:ring-blue-300 focus:ring-4 focus:ring-blue-500 focus:ring-offset-2 transition-shadow rounded-[50%]" target="_blank" href="https://res.cloudinary.com/mrflashaccount/image/upload/v1615478867/garin.dev/me.jpg" title="link to my photo">
+          <picture>
+            <source media="(max-width: 767px)"
+              srcset="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_avif,q_70,w_96,dpr_2.0/v1615478867/garin.dev/me.jpg 2x, https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_avif,q_70,w_96,dpr_1.0/v1615478867/garin.dev/me.jpg 1x" type="image/avif">
+            <source media="(min-width: 768px)"
+              srcset="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_avif,q_70,w_192,dpr_2.0/v1615478867/garin.dev/me.jpg 2x, https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_avif,q_70,w_192,dpr_1.0/v1615478867/garin.dev/me.jpg 1x" type="image/avif">
+            <img
+              class="w-24 md:w-48 rounded-full object-cover pointer-events-none"
+              height="192"
+              width="192"
+              alt=""
+              role="presentation"
+              srcset="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_auto,q_70,w_192,dpr_2.0/v1615478867/garin.dev/me.jpg 2x"
+              src="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_auto,q_70,w_192/v1615478867/garin.dev/me.jpg"
+            />
+          </picture>
+        </Link>
         <h1 class="font-semibold md:text-5xl text-4xl text-gray-800 pt-8 pb-8">
           Hi! My name is 
           <span role="presentation" class="text-blue-700">
