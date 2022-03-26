@@ -1,0 +1,104 @@
+---
+import '../styles/global.css';
+import Link from 'components/link.astro';
+
+const favicon = process.env.NODE_ENV === 'production' ? '/favicon.svg' : '/favicon-dev.svg';
+---
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sergey Garin</title>
+    <link
+      href="https://res.cloudinary.com/"
+      crossorigin="anonymous"
+      rel="preconnect"
+    />
+    <meta name="description" content="My contacts and cv" />
+    <link itemprop="url" href="https://garin.dev" />
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href={favicon} type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="author" content="Sergey Garin" />
+    <meta property="og:title" content="Sergey Garin" />
+    <meta property="og:description" content="My contacts and cv" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:site_name" content="Sergey Garin" />
+    <style>
+    </style>
+  </head> 
+  <body>
+    <div role="presentation" class="max-w-screen-md mx-auto pl-8 pr-8 pb-8">
+        <main>
+          <div class="pt-16 pb-8 flex flex-col items-center text-center">
+            <img
+              class="w-24 md:w-48 rounded-full object-cover"
+              height="192"
+              width="192"
+              alt=""
+              role="presentation"
+              srcset="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_auto,q_auto,w_192,dpr_2.0/v1615478867/garin.dev/me.jpg 2x"
+              src="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_auto,q_auto,w_192/v1615478867/garin.dev/me.jpg"
+            />
+            <h1 class="font-semibold md:text-5xl text-4xl text-gray-800 pt-8 pb-8">
+              Hi! My name is{" "}
+              <span role="presentation" class="text-blue-700">
+                <span itemprop="familyName">Garin</span>{" "}
+                <span itemprop="givenName">Sergey</span>.
+              </span>{" "}
+              <br />
+              I'm a frontend developer.
+            </h1>
+          </div>
+
+          <section class="md:mt-16 mt-8">
+            <h2 class="text-4xl mb-6 text-center md:text-left">
+              Get in touch
+            </h2>
+            <div>
+              <p class="text-xl">
+                Say{" "}
+                <Link
+                  href="https://t.me/mrflashaccount"
+                  itemProp="sameAs"
+                  rel="me"
+                >
+                  Hi!
+                </Link>{" "}
+                to me or find me on the other platforms:{" "}
+                <Link
+                  href="https://twitter.com/mrflashaccount"
+                  itemProp="sameAs"
+                  rel="me"
+                >
+                  twitter
+                </Link>
+                ,{" "}
+                <Link
+                  href="https://github.com/MrFlashAccount"
+                  itemProp="sameAs"
+                  rel="me"
+                >
+                  github
+                </Link>{" "}
+                or you can write me a lovely letter:{" "}
+                <Link href="mailto:sergey@garin.dev" itemProp="email">
+                  email
+                </Link>
+                <br />
+                Peruse my{" "}
+                <Link href="https://hh.ru/resume/958a7f6aff022a7d620039ed1f647643674c50?print=true">
+                  résumé
+                </Link>
+              </p>
+            </div>
+          </section>
+        </main>
+        <footer class="block border-solid border-t border-blue-600 mt-10 pt-1">
+          Site is under construction 🚧
+        </footer>
+      </div>
+  </body>
+</html>

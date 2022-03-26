@@ -7,20 +7,15 @@
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
-    "jsx": "react",
-    "jsxFactory": "react-jsx",
-    "jsxFragmentFactory": "React.Fragment",
+    "jsx": "react-jsx",
     "baseUrl": "./src",
     "lib": ["es2019", "dom"],
     "resolveJsonModule": true,
+    "types": ["node"],
     "typeRoots": ["./src/types", "./node_modules/@types"],
     "skipLibCheck": true,
     "noEmit": true
   },
   "include": ["src/**/*"],
-  "exclude": [
-    "node_modules",
-    "public",
-    "jest",
-  ]
+  "exclude": ["node_modules", "public", "jest"]
 }

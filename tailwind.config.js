@@ -1,6 +1,8 @@
 module.exports = {
-  purge: ["./src/**/*.ts", "./src/**/*.tsx"],
-  darkMode: false, // or 'media' or 'class'
+  content: [
+    "./public/**/*.html",
+    "./src/**/*.{astro,js,jsx,svelte,ts,tsx,vue}",
+  ],
   theme: {
     extend: {},
   },
