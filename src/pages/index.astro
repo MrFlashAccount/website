@@ -2,11 +2,13 @@
 import '../styles/global.css';
 import Link from 'components/link.astro';
 
-const favicon = process.env.NODE_ENV === 'production' ? '/favicon.svg' : '/favicon-dev.svg'
+const favicon = process.env.NODE_ENV === 'production' ? '/favicon.svg' : '/favicon-dev.svg';
 ---
 
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Sergey Garin</title>
     <link
       href="https://res.cloudinary.com/"
@@ -24,7 +26,9 @@ const favicon = process.env.NODE_ENV === 'production' ? '/favicon.svg' : '/favic
     <meta property="og:description" content="My contacts and cv" />
     <meta property="og:locale" content="en" />
     <meta property="og:site_name" content="Sergey Garin" />
-  </head>
+    <style>
+    </style>
+  </head> 
   <body>
     <div role="presentation" class="max-w-screen-md mx-auto pl-8 pr-8 pb-8">
         <main>

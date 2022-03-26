@@ -3,7 +3,7 @@
 // @ts-check
 
 export default /** @type {import('astro').AstroUserConfig} */ ({
-  integrations: [],
   dist: "./public",
   public: "./src/public/",
+  buildOptions: { site: "https://garin.dev" },
 });
