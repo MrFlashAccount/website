@@ -4,8 +4,8 @@ import MainLayout from 'layouts/main.astro';
 ---
 <MainLayout>
   <main class="max-w-screen-lg mx-auto px-8 pb-8 min-h-screen">
-    <div class="py-8 md:pt-[20vh] flex flex-col-reverse md:flex-row justify-between place-items-center gap-8 md:gap-12 text-left">
-      <div class="text-center md:text-left">
+    <div role="presentation" class="py-8 md:pt-[20vh] flex flex-col-reverse md:flex-row justify-between place-items-center gap-8 md:gap-12 text-left">
+      <div role="presentation" class="text-center md:text-left">
         <h1 class="flex flex-col font-medium md:text-5xl text-4xl text-gray-800">
           <span class="text-xl">Hi 🙋‍♂️ I'm</span> 
           <span role="presentation" class="block h-10 md:h-14 bg-clip-text animate-move-bg bg-gradient-to-r from-indigo-600 via-pink-500 to-indigo-600 bg-[length:400%] text-transparent">
@@ -31,7 +31,8 @@ import MainLayout from 'layouts/main.astro';
         <div class="flex gap-3 mt-12 text-xl justify-center md:justify-start">
           <Link href="/cv.pdf" download="Garin Sergey CV.pdf">
             Curriculum Vitae&nbsp;📃
-          </Link> | 
+          </Link>
+          <span role="presentation">|</span>
           <Link href="mailto:sergey@garin.dev" itemProp="email"> Write me a letter&nbsp;💌</Link>
         </div>
       </div> 
@@ -66,12 +67,14 @@ import MainLayout from 'layouts/main.astro';
           itemProp="sameAs"
           rel="me">
           Telegram
-        </Link> | 
+        </Link>
+        <span role="presentation">|</span>
         <Link
           href="https://twitter.com/mrflashaccount"
           itemProp="sameAs"
           rel="me"
-        >Twitter</Link> | 
+        >Twitter</Link>
+        <span role="presentation">|</span>
         <Link
           href="https://github.com/MrFlashAccount"
           itemProp="sameAs"
