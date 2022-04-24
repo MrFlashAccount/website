@@ -14,9 +14,8 @@ const favicon = process.env.NODE_ENV === 'production' ? '/favicon.svg' : '/favic
       crossorigin="anonymous"
       rel="preconnect"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="/public/lato-latin-700.woff2">
+    <link rel="preload" href="/public/lato-latin-400.woff2">
     <meta name="description" content="My contacts and cv" />
     <link itemprop="url" href="https://garin.dev" />
     <link rel="icon" href="/favicon.ico" sizes="any">
