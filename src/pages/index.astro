@@ -3,73 +3,82 @@ import Link from 'components/link.astro';
 import MainLayout from 'layouts/main.astro';
 ---
 <MainLayout>
-  <div role="presentation" class="max-w-screen-md mx-auto pl-8 pr-8 pb-8">
-    <main>
-      <div class="pt-16 pb-8 flex flex-col items-center text-center">
-        <Link roundRadius="full" class="hover:ring-4 hover:ring-blue-300 focus:ring-4 focus:ring-blue-500 focus:ring-offset-2 transition-shadow rounded-[50%]" target="_blank" href="https://res.cloudinary.com/mrflashaccount/image/upload/v1615478867/garin.dev/me.jpg" title="link to my photo">
-          <picture>
-            <source media="(max-width: 767px)"
-              srcset="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_avif,q_70,w_96,dpr_2.0/v1615478867/garin.dev/me.jpg 2x, https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_avif,q_70,w_96,dpr_1.0/v1615478867/garin.dev/me.jpg 1x" type="image/avif">
-            <source media="(min-width: 768px)"
-              srcset="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_avif,q_70,w_192,dpr_2.0/v1615478867/garin.dev/me.jpg 2x, https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_avif,q_70,w_192,dpr_1.0/v1615478867/garin.dev/me.jpg 1x" type="image/avif">
-            <img
-              class="w-24 md:w-48 rounded-full object-cover pointer-events-none"
-              height="192"
-              width="192"
-              alt=""
-              role="presentation"
-              srcset="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_auto,q_70,w_192,dpr_2.0/v1615478867/garin.dev/me.jpg 2x"
-              src="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_auto,q_70,w_192/v1615478867/garin.dev/me.jpg"
-            />
-          </picture>
-        </Link>
-        <h1 class="font-semibold md:text-5xl text-4xl text-gray-800 pt-8 pb-8">
-          Hi! My name is 
-          <span role="presentation" class="text-blue-700">
-            <span itemprop="familyName">Garin</span> 
-            <span itemprop="givenName">Sergey</span>.
+  <main class="max-w-screen-lg mx-auto px-8 pb-8 min-h-screen">
+    <div class="py-8 md:pt-[20vh] flex flex-col-reverse md:flex-row justify-between place-items-center gap-8 md:gap-12 text-left">
+      <div class="text-center md:text-left">
+        <h1 class="flex flex-col font-medium md:text-5xl text-4xl text-gray-800">
+          <span class="text-xl">Hi 🙋‍♂️ I'm</span> 
+          <span role="presentation" class="block h-10 md:h-14 bg-clip-text animate-move-bg bg-gradient-to-r from-indigo-600 via-pink-500 to-indigo-600 bg-[length:400%] text-transparent">
+            <span class="font-bold md:text-5xl text-4xl" itemprop="familyName">Garin</span> 
+            <span class="font-bold md:text-5xl text-4xl" itemprop="givenName">Sergey</span>
           </span>
-          <br />
-          I'm a frontend developer.
         </h1>
-      </div>
 
-      <section class="md:mt-16 mt-8">
-        <h2 class="text-4xl mb-6 text-center md:text-left">
-          Get in touch
-        </h2>
-        <div>
-          <p class="text-xl">
-            Say 
-            <Link
-              href="https://t.me/mrflashaccount"
-              itemProp="sameAs"
-              rel="me"
-            >Hi!</Link> 
-            to me or find me on the other platforms: 
-            <Link
-              href="https://twitter.com/mrflashaccount"
-              itemProp="sameAs"
-              rel="me"
-            >twitter</Link>,
-            <Link
-              href="https://github.com/MrFlashAccount"
-              itemProp="sameAs"
-              rel="me"
-            >github</Link>
-            or you can write me a lovely letter:
-            <Link href="mailto:sergey@garin.dev" itemProp="email">email</Link>
-            <br />
-            Peruse my
-            <Link href="/cv.pdf" download="Garin Sergey CV.pdf">
-              résumé
-            </Link>
+        <p class="font-normal text-2xl">
+          a frontend engeneer&nbsp;🧑‍💻, geek&nbsp;🤓 and travaler&nbsp;🌎
+        </p>
+
+        <div role="presentation" class="flex flex-col md:flex-row mt-8 md:mt-12 gap-4 md:gap-20 max-w-lg">
+          <p class="font-normal text-l">
+            I like to craft solid and scalable frontend products with great user experiences.
+          </p>
+
+          <p class="font-normal text-l">
+            Highly skilled at design systems, microfrontends and web perfomance.
           </p>
         </div>
-      </section>
-    </main>
-    <footer class="block border-solid border-t border-blue-600 mt-10 pt-1">
+
+        <div class="flex gap-3 mt-12 text-xl justify-center md:justify-start">
+          <Link href="/cv.pdf" download="Garin Sergey CV.pdf">
+            Curriculum Vitae&nbsp;📃
+          </Link> | 
+          <Link href="mailto:sergey@garin.dev" itemProp="email"> Write me a letter&nbsp;💌</Link>
+        </div>
+      </div> 
+
+      <Link roundRadius="full" class="hover:ring-4 hover:ring-blue-300 focus:ring-4 focus:ring-blue-500 focus:ring-offset-2 transition-shadow rounded-[50%]" target="_blank" href="https://res.cloudinary.com/mrflashaccount/image/upload/v1615478867/garin.dev/me.jpg" title="link to my photo">
+        <picture>
+          <source media="(max-width: 767px)"
+            srcset="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_avif,q_70,w_96,dpr_2.0/v1615478867/garin.dev/me.jpg 2x, https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_avif,q_70,w_96,dpr_1.0/v1615478867/garin.dev/me.jpg 1x" type="image/avif">
+          <source media="(min-width: 768px)"
+            srcset="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_avif,q_70,w_192,dpr_2.0/v1615478867/garin.dev/me.jpg 2x, https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_avif,q_70,w_192,dpr_1.0/v1615478867/garin.dev/me.jpg 1x" type="image/avif">
+          <img
+            class="w-32 md:w-64 rounded-full object-cover pointer-events-none"
+            height="192"
+            width="192"
+            alt=""
+            role="presentation"
+            srcset="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_auto,q_70,w_192,dpr_2.0/v1615478867/garin.dev/me.jpg 2x"
+            src="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_auto,q_70,w_192/v1615478867/garin.dev/me.jpg"
+          />
+        </picture>
+      </Link>
+    </div>
+  </main>
+
+  <footer class="border-solid border-t border-blue-600 mt-10 px:4 md:px-8 py-2 md:py-4 bg-slate-100">
+    <div class="flex flex-col-reverse md:flex-row place-items-center md:place-content-between max-w-screen-lg mx-auto">
       Site is under construction 🚧
-    </footer>
-  </div>
+      
+      <div class="flex gap-2">
+        <Link
+          href="https://t.me/mrflashaccount"
+          itemProp="sameAs"
+          rel="me">
+          Telegram
+        </Link> | 
+        <Link
+          href="https://twitter.com/mrflashaccount"
+          itemProp="sameAs"
+          rel="me"
+        >Twitter</Link> | 
+        <Link
+          href="https://github.com/MrFlashAccount"
+          itemProp="sameAs"
+          rel="me">
+          Github
+        </Link>
+      </div>
+    </div>
+  </footer>
 </MainLayout>

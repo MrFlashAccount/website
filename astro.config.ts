@@ -8,7 +8,7 @@ import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { resolve } from "node:path";
 
-export default /** @type {import('astro').AstroUserConfig} */ ({
+export default /** @type {import('astro').AstroUserConfig} */ {
   dist: "./public",
   public: "./src/public/",
   buildOptions: { site: "https://garin.dev" },
@@ -69,4 +69,4 @@ export default /** @type {import('astro').AstroUserConfig} */ ({
       },
     },
   },
-});
+};
