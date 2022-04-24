@@ -4,7 +4,7 @@ import '../styles/global.css';
 const favicon = process.env.NODE_ENV === 'production' ? '/favicon.svg' : '/favicon-dev.svg';
 ---
 
-<html lang="en" itemtype="https://schema.org/Person" itemscope>
+<html lang="en" itemtype="https://schema.org/Person" itemscope class="bg-slate-100 ">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,6 +14,8 @@ const favicon = process.env.NODE_ENV === 'production' ? '/favicon.svg' : '/favic
       crossorigin="anonymous"
       rel="preconnect"
     />
+    <link rel="preload" href="lato-latin-700.woff2">
+    <link rel="preload" href="lato-latin-400.woff2">
     <meta name="description" content="My contacts and cv" />
     <link itemprop="url" href="https://garin.dev" />
     <link rel="icon" href="/favicon.ico" sizes="any">
