@@ -1,14 +1,15 @@
 // Full Astro Configuration API Documentation:
 // https://docs.astro.build/reference/configuration-reference
 // @ts-check
-import { parse, HTMLElement } from "node-html-parser";
+import { defineConfig } from "astro/config";
+import posthtml from "posthtml";
+import minifyClassnames from "posthtml-minify-classnames";
+import htmlnano from "htmlnano";
 import { minify, createConfiguration } from "@minify-html/js";
 import fs from "node:fs";
-import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
-import { resolve } from "node:path";
 
-export default /** @type {import('astro').AstroUserConfig} */ {
+export default defineConfig({
   dist: "./public",
   public: "./src/public/",
   buildOptions: { site: "https://garin.dev" },
@@ -16,7 +17,7 @@ export default /** @type {import('astro').AstroUserConfig} */ {
   adapter: {
     name: "test",
     hooks: {
-      "astro:build:done": ({ dir }) => {
+      "astro:build:done": async ({ dir }) => {
         const files = fs
           .readdirSync(fileURLToPath(dir), {
             withFileTypes: true,
@@ -26,18 +27,38 @@ export default /** @type {import('astro').AstroUserConfig} */ {
 
         for (const { name } of files) {
           const filePath = fileURLToPath(new URL(name, dir));
-
-          const root = parse(
-            fs.readFileSync(fileURLToPath(new URL(name, dir)), "utf-8")
+          const htmlFile = fs.readFileSync(
+            fileURLToPath(new URL(name, dir)),
+            "utf-8"
           );
-          removeCssLinks(root);
 
-          fs.writeFileSync(filePath, minifyHTML(root.toString()), "utf-8");
+          const { html } = await posthtml()
+            .use(
+              minifyClassnames({
+                genNameClass: "genNameEmoji",
+                genNameId: "genNameEmoji",
+              })
+            )
+            .use(
+              htmlnano({
+                removeUnusedCss: { tool: "purgeCSS" },
+                minifyJs: false,
+              })
+            )
+            .use((tree) =>
+              tree.match(
+                { tag: "link", attrs: { rel: "stylesheet" } },
+                () => null
+              )
+            )
+            .process(htmlFile);
+
+          fs.writeFileSync(filePath, minifyHTML(html), "utf-8");
         }
       },
     },
   },
-};
+});
 
 function minifyHTML(
   html: string,
@@ -46,10 +67,4 @@ function minifyHTML(
   const minifyConfig = createConfiguration({ ...config });
 
   return minify(html, minifyConfig).toString();
-}
-
-function removeCssLinks(root: HTMLElement): void {
-  for (const linkElement of root.querySelectorAll("link[rel=stylesheet]")) {
-    linkElement.remove();
-  }
 }
