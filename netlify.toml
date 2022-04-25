@@ -1,4 +1,4 @@
-[headers]
+[[headers]]
   for = "/asset*"
 
   [headers.values]

@@ -30,7 +30,7 @@ export default /** @type {import('astro').AstroUserConfig} */ {
           const root = parse(
             fs.readFileSync(fileURLToPath(new URL(name, dir)), "utf-8")
           );
-          inlineCSS(root);
+          removeCssLinks(root);
 
           fs.writeFileSync(filePath, minifyHTML(root.toString()), "utf-8");
         }
@@ -48,7 +48,7 @@ function minifyHTML(
   return minify(html, minifyConfig).toString();
 }
 
-function inlineCSS(root: HTMLElement): void {
+function removeCssLinks(root: HTMLElement): void {
   for (const linkElement of root.querySelectorAll("link[rel=stylesheet]")) {
     linkElement.remove();
   }
