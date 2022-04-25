@@ -12,6 +12,7 @@ export default /** @type {import('astro').AstroUserConfig} */ {
   dist: "./public",
   public: "./src/public/",
   buildOptions: { site: "https://garin.dev" },
+  vite: { build: { assetsInlineLimit: 0 } },
   adapter: {
     name: "test",
     hooks: {
@@ -29,8 +30,7 @@ export default /** @type {import('astro').AstroUserConfig} */ {
           const root = parse(
             fs.readFileSync(fileURLToPath(new URL(name, dir)), "utf-8")
           );
-
-          inlineCSS(root, dir);
+          removeCssLinks(root);
 
           fs.writeFileSync(filePath, minifyHTML(root.toString()), "utf-8");
         }
@@ -48,12 +48,8 @@ function minifyHTML(
   return minify(html, minifyConfig).toString();
 }
 
-function inlineCSS(root: HTMLElement, outputDirectory: string): void {
+function removeCssLinks(root: HTMLElement): void {
   for (const linkElement of root.querySelectorAll("link[rel=stylesheet]")) {
-    const href = linkElement.attrs.href;
-    const stylesheetPath = href.startsWith("/") ? href.slice(1) : href;
-    const path = resolve(fileURLToPath(outputDirectory), stylesheetPath);
-
-    linkElement.replaceWith(`<style>${readFileSync(path, "utf-8")}</style>`);
+    linkElement.remove();
   }
 }

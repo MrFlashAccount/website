@@ -1,7 +1,11 @@
 ---
-import '../styles/global.css';
+import css from '../styles/global.css?inline'
+import svgFavicon from '../static/favicon.svg'
+import svgLegacyFavicon from '../static/favicon.ico'
+import svgDevFavicon from '../static/favicon-dev.svg'
+import appleTouchIcon from '../static/apple-touch-icon.png'
 
-const favicon = process.env.NODE_ENV === 'production' ? '/favicon.svg' : '/favicon-dev.svg';
+const favicon = process.env.NODE_ENV === 'production' ? svgFavicon : svgDevFavicon;
 ---
 
 <html lang="en" itemtype="https://schema.org/Person" itemscope class="bg-slate-100 ">
@@ -15,21 +19,19 @@ const favicon = process.env.NODE_ENV === 'production' ? '/favicon.svg' : '/favic
       crossorigin="anonymous"
       rel="preconnect"
     />
-    <link rel="preload" as="font" type="font/woff2" href="lato-latin-700.woff2">
-    <link rel="preload" as="font" type="font/woff2" href="lato-latin-400.woff2">
     <meta name="description" content="My contacts and cv" />
     <link itemprop="url" href="https://garin.dev" />
-    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href={svgLegacyFavicon} sizes="any">
     <link rel="icon" href={favicon} type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="apple-touch-icon" href={appleTouchIcon}>
     <meta name="author" content="Sergey Garin" />
     <meta property="og:title" content="Sergey Garin" />
     <meta property="og:description" content="My contacts and cv" />
     <meta property="og:locale" content="en" />
     <meta property="og:site_name" content="Sergey Garin" />
+    <style set:html={css}></style>
   </head> 
-  <body>
+  <body> 
     <slot />
   </body>
 </html>
