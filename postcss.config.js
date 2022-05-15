@@ -1,7 +1,9 @@
+const commonPlugins = [require("tailwindcss"), require("autoprefixer")];
+// const productionPlugins = [require("postcss-variable-compress")];
+
 module.exports = () => ({
   plugins: [
-    require("tailwindcss"),
-    require("autoprefixer"),
-    require("postcss-variable-compress"),
+    ...commonPlugins,
+    // ...[process.env.NODE_ENV === "production" ? productionPlugins : []],
   ],
 });

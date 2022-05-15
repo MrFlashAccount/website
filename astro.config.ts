@@ -18,6 +18,8 @@ export default defineConfig({
     name: "test",
     hooks: {
       "astro:build:done": async ({ dir }) => {
+        if (process.env.NODE_ENV !== "production") return;
+
         const files = fs
           .readdirSync(fileURLToPath(dir), {
             withFileTypes: true,
