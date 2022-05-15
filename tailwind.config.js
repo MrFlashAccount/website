@@ -1,5 +1,5 @@
 /**
- * @type {import('tailwindcss').TailwindConfig}
+ * @type {import('tailwindcss').Config}
  */
 const config = {
 	content: [

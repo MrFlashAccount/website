@@ -17,6 +17,8 @@ export default defineConfig({
 		name: "test",
 		hooks: {
 			"astro:build:done": async ({ routes }) => {
+				if (process.env.NODE_ENV !== "production") return;
+
 				const files = routes
 					.filter((route) => route.type === "page")
 					.map(({ distURL }) => distURL)
