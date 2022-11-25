@@ -1,16 +1,32 @@
 ---
-import Link from 'components/link.astro';
-import MainLayout from 'layouts/main.astro';
+import { Picture } from "@astrojs/image/components";
+import me from "../static/me.jpg";
+import meLink from "../static/me.jpg?url";
+import Link from "components/link.astro";
+import MainLayout from "layouts/main.astro";
 ---
+
 <MainLayout>
   <main class="max-w-screen-lg mx-auto px-8 pb-8 min-h-screen">
-    <div role="presentation" class="py-8 md:pt-[20vh] flex flex-col-reverse md:flex-row justify-between place-items-center gap-8 md:gap-12 text-left">
+    <div
+      role="presentation"
+      class="py-8 md:pt-[20vh] flex flex-col-reverse md:flex-row justify-between place-items-center gap-8 md:gap-12 text-left"
+    >
       <div role="presentation" class="text-center md:text-left">
-        <h1 class="flex flex-col font-medium md:text-5xl text-4xl text-gray-800">
-          <span class="text-xl">Hi 🙋‍♂️ I'm</span> 
-          <span role="presentation" class="block h-10 md:h-14 bg-clip-text animate-move-bg bg-gradient-to-r from-indigo-600 via-pink-500 to-indigo-600 bg-[length:400%] text-transparent">
-            <span class="font-bold md:text-5xl text-4xl" itemprop="familyName">Garin</span> 
-            <span class="font-bold md:text-5xl text-4xl" itemprop="givenName">Sergey</span>
+        <h1
+          class="flex flex-col font-medium md:text-5xl text-4xl text-gray-800"
+        >
+          <span class="text-xl">Hi 🙋‍♂️ I'm</span>
+          <span
+            role="presentation"
+            class="block h-10 md:h-14 bg-clip-text animate-move-bg bg-gradient-to-r from-indigo-600 via-pink-500 to-indigo-600 bg-[length:400%] text-transparent"
+          >
+            <span class="font-bold md:text-5xl text-4xl" itemprop="familyName"
+              >Garin</span
+            >
+            <span class="font-bold md:text-5xl text-4xl" itemprop="givenName"
+              >Sergey</span
+            >
           </span>
         </h1>
 
@@ -18,13 +34,18 @@ import MainLayout from 'layouts/main.astro';
           a frontend engineer&nbsp;🧑‍💻, geek&nbsp;🤓 and traveler&nbsp;🌎
         </p>
 
-        <div role="presentation" class="flex flex-col md:flex-row mt-8 md:mt-12 gap-4 md:gap-20 max-w-lg">
+        <div
+          role="presentation"
+          class="flex flex-col md:flex-row mt-8 md:mt-12 gap-4 md:gap-20 max-w-lg"
+        >
           <p class="font-normal text-l">
-            I like to craft solid and scalable frontend products with great user experiences.
+            I like to craft solid and scalable frontend products with great user
+            experiences.
           </p>
 
           <p class="font-normal text-l">
-            Highly skilled at design systems, microfrontends and web performance.
+            Highly skilled at design systems, microfrontends and web
+            performance.
           </p>
         </div>
 
@@ -33,16 +54,42 @@ import MainLayout from 'layouts/main.astro';
             Curriculum Vitae&nbsp;📃
           </Link>
           <span role="presentation">|</span>
-          <Link href="mailto:sergey@garin.dev" itemProp="email"> Write me a letter&nbsp;💌</Link>
+          <Link href="mailto:job@garin.dev" itemProp="email">
+            Write me a letter&nbsp;💌</Link
+          >
         </div>
-      </div> 
+      </div>
 
-      <Link roundRadius="full" class="hover:ring-4 hover:ring-blue-300 focus:ring-4 focus:ring-blue-500 focus:ring-offset-2 transition-shadow rounded-[50%]" target="_blank" href="https://res.cloudinary.com/mrflashaccount/image/upload/v1615478867/garin.dev/me.jpg" title="link to my photo">
-        <picture>
-          <source media="(max-width: 767px)"
-            srcset="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_avif,q_70,w_96,dpr_2.0/v1615478867/garin.dev/me.jpg 2x, https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_avif,q_70,w_96,dpr_1.0/v1615478867/garin.dev/me.jpg 1x" type="image/avif">
-          <source media="(min-width: 768px)"
-            srcset="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_avif,q_70,w_192,dpr_2.0/v1615478867/garin.dev/me.jpg 2x, https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_avif,q_70,w_192,dpr_1.0/v1615478867/garin.dev/me.jpg 1x" type="image/avif">
+      <Link
+        roundRadius="full"
+        class="hover:ring-4 hover:ring-blue-300 focus:ring-4 focus:ring-blue-500 focus:ring-offset-2 transition-shadow rounded-[50%]"
+        target="_blank"
+        href={meLink}
+        title="link to my photo"
+      >
+        <Picture
+          class="w-32 md:w-64 rounded-full object-cover pointer-events-none"
+          src={me}
+          widths={[192, 386]}
+          sizes="(max-width: 767px) 192px, (min-width: 768px) 386px"
+          formats={["avif", "webp", "jpg"]}
+          aspectRatio="1:1"
+          alt=""
+          role="presentation"
+          loading="eager"
+          width="192"
+          height="192"
+        >
+          <source
+            media="(max-width: 767px)"
+            srcset="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_avif,q_70,w_96,dpr_2.0/v1615478867/garin.dev/me.jpg 2x, https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_avif,q_70,w_96,dpr_1.0/v1615478867/garin.dev/me.jpg 1x"
+            type="image/avif"
+          />
+          <source
+            media="(min-width: 768px)"
+            srcset="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_avif,q_70,w_192,dpr_2.0/v1615478867/garin.dev/me.jpg 2x, https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_avif,q_70,w_192,dpr_1.0/v1615478867/garin.dev/me.jpg 1x"
+            type="image/avif"
+          />
           <img
             class="w-32 md:w-64 rounded-full object-cover pointer-events-none"
             height="192"
@@ -52,33 +99,35 @@ import MainLayout from 'layouts/main.astro';
             srcset="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_auto,q_70,w_192,dpr_2.0/v1615478867/garin.dev/me.jpg 2x"
             src="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_auto,q_70,w_192/v1615478867/garin.dev/me.jpg"
           />
-        </picture>
+        </Picture>
       </Link>
     </div>
   </main>
 
-  <footer class="border-t border-blue-600 mt-10 px:4 md:px-8 py-2 md:py-4 bg-slate-100">
-    <div class="flex flex-col-reverse md:flex-row place-items-center md:place-content-between max-w-screen-lg mx-auto">
+  <footer
+    class="border-t border-blue-600 mt-10 px:4 md:px-8 py-2 md:py-4 bg-slate-100"
+  >
+    <div
+      class="flex flex-col-reverse md:flex-row place-items-center md:place-content-between max-w-screen-lg mx-auto"
+    >
       Site is under construction 🚧
-      
+
       <div class="flex gap-2">
-        <Link
-          href="https://t.me/mrflashaccount"
-          itemProp="sameAs"
-          rel="me">
+        <Link href="https://t.me/mrflashaccount" itemProp="sameAs" rel="me">
           Telegram
         </Link>
         <span role="presentation">|</span>
         <Link
           href="https://twitter.com/mrflashaccount"
           itemProp="sameAs"
-          rel="me"
-        >Twitter</Link>
+          rel="me">Twitter</Link
+        >
         <span role="presentation">|</span>
         <Link
           href="https://github.com/MrFlashAccount"
           itemProp="sameAs"
-          rel="me">
+          rel="me"
+        >
           Github
         </Link>
       </div>
