@@ -14,14 +14,13 @@
     "spelling": "npx yaspeller en -e astro ./src/pages"
   },
   "engines": {
-    "node": ">=14.x"
+    "node": ">=16.x"
   },
   "dependencies": {
     "clsx": "1.2.1"
   },
   "devDependencies": {
     "@astrojs/image": "^0.11.6",
-    "@minify-html/js": "0.8.1",
     "@types/node": "^18.11.9",
     "astro": "^1.6.11",
     "autoprefixer": "10.4.13",

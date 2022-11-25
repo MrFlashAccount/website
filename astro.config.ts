@@ -42,6 +42,15 @@ export default defineConfig({
             )
             .use(
               htmlnano({
+                collapseAttributeWhitespace: true,
+                collapseBooleanAttributes: { amphtml: false },
+                collapseWhitespace: "aggressive",
+                deduplicateAttributeValues: true,
+                normalizeAttributeValues: true,
+                minifyConditionalComments: true,
+                removeAttributeQuotes: true,
+                removeEmptyAttributes: true,
+                removeRedundantAttributes: true,
                 removeUnusedCss: true,
                 minifyJs: false,
                 removeComments: true,
@@ -64,18 +73,9 @@ export default defineConfig({
             )
             .process(htmlFile);
 
-          writeFileSync(filePath, minifyHTML(html), "utf-8");
+          writeFileSync(filePath, html, "utf-8");
         }
       },
     },
   },
 });
-
-function minifyHTML(
-  html: string,
-  config: Parameters<typeof createConfiguration>[0] = {}
-): string {
-  const minifyConfig = createConfiguration({ ...config });
-
-  return minify(html, minifyConfig).toString();
-}
