@@ -44,10 +44,12 @@
   size-adjust: 100.43%;
 }
 
-html {
-  font-family: "Lato", "Lato Fallback";
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  font-family: "Lato", "Lato Fallback", ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+}
