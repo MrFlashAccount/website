@@ -3,6 +3,7 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import posthtml from "posthtml";
+// @ts-ignore
 import minifyClassnames from "posthtml-minify-classnames";
 import htmlnano from "htmlnano";
 import { minify, createConfiguration } from "@minify-html/js";
@@ -10,9 +11,9 @@ import fs from "node:fs";
 import { fileURLToPath } from "node:url";
 
 export default defineConfig({
-  dist: "./public",
-  public: "./src/public/",
-  buildOptions: { site: "https://garin.dev" },
+  outDir: "./public",
+  publicDir: "./src/public/",
+  site: "https://garin.dev",
   vite: { build: { assetsInlineLimit: 0 } },
   adapter: {
     name: "test",
@@ -23,7 +24,7 @@ export default defineConfig({
             withFileTypes: true,
             encoding: "utf-8",
           })
-          .filter(({ isFile, name }) => isFile && name.endsWith(".html"));
+          .filter((dirent) => dirent.isFile() && dirent.name.endsWith(".html"));
 
         for (const { name } of files) {
           const filePath = fileURLToPath(new URL(name, dir));
@@ -39,16 +40,11 @@ export default defineConfig({
                 genNameId: "genNameEmoji",
               })
             )
-            .use(
-              htmlnano({
-                removeUnusedCss: { tool: "purgeCSS" },
-                minifyJs: false,
-              })
-            )
+            .use(htmlnano({ removeUnusedCss: true, minifyJs: false }))
             .use((tree) =>
               tree.match(
                 { tag: "link", attrs: { rel: "stylesheet" } },
-                () => null
+                () => []
               )
             )
             .process(htmlFile);
