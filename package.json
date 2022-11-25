@@ -17,19 +17,18 @@
     "node": ">=16.x"
   },
   "dependencies": {
-    "astro": "^1.6.11",
     "clsx": "1.2.1"
   },
   "devDependencies": {
     "@astrojs/image": "^0.11.6",
     "@minify-html/js": "0.8.1",
     "@types/node": "^18.11.9",
-    "@types/tailwindcss": "3.1.0",
+    "astro": "^1.6.11",
     "autoprefixer": "10.4.13",
     "htmlnano": "^2.0.3",
     "lightningcss": "1.16.1",
     "postcss": "8.4.19",
-    "postcss-variable-compress": "^1.2.0",
+    "postcss-variable-compress": "^2.0.1",
     "posthtml": "^0.16.6",
     "posthtml-minify-classnames": "^0.3.0",
     "posthtml-remove-tags": "^0.1.0",
