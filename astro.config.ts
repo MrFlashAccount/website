@@ -2,12 +2,13 @@
 // https://docs.astro.build/reference/configuration-reference
 // @ts-check
 import { defineConfig } from "astro/config";
+import image from "@astrojs/image";
 import posthtml from "posthtml";
-// @ts-ignore
+import { transform } from "lightningcss";
 import minifyClassnames from "posthtml-minify-classnames";
 import htmlnano from "htmlnano";
 import { minify, createConfiguration } from "@minify-html/js";
-import fs from "node:fs";
+import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
 export default defineConfig({
@@ -15,20 +16,19 @@ export default defineConfig({
   publicDir: "./src/public/",
   site: "https://garin.dev",
   vite: { build: { assetsInlineLimit: 0 } },
+  integrations: [image()],
   adapter: {
     name: "test",
     hooks: {
       "astro:build:done": async ({ dir }) => {
-        const files = fs
-          .readdirSync(fileURLToPath(dir), {
-            withFileTypes: true,
-            encoding: "utf-8",
-          })
-          .filter((dirent) => dirent.isFile() && dirent.name.endsWith(".html"));
+        const files = readdirSync(fileURLToPath(dir), {
+          withFileTypes: true,
+          encoding: "utf-8",
+        }).filter((dirent) => dirent.isFile() && dirent.name.endsWith(".html"));
 
         for (const { name } of files) {
           const filePath = fileURLToPath(new URL(name, dir));
-          const htmlFile = fs.readFileSync(
+          const htmlFile = readFileSync(
             fileURLToPath(new URL(name, dir)),
             "utf-8"
           );
@@ -40,16 +40,31 @@ export default defineConfig({
                 genNameId: "genNameEmoji",
               })
             )
-            .use(htmlnano({ removeUnusedCss: true, minifyJs: false }))
+            .use(
+              htmlnano({
+                removeUnusedCss: true,
+                minifyJs: false,
+                removeComments: true,
+              })
+            )
             .use((tree) =>
-              tree.match(
-                { tag: "link", attrs: { rel: "stylesheet" } },
-                () => []
-              )
+              tree.match({ tag: "style" }, (node) => {
+                if (node.content) {
+                  const { code } = transform({
+                    filename: "",
+                    code: Buffer.from(node.content[0] as string),
+                    minify: true,
+                  });
+
+                  node.content[0] = code.toString();
+                }
+
+                return node;
+              })
             )
             .process(htmlFile);
 
-          fs.writeFileSync(filePath, minifyHTML(html), "utf-8");
+          writeFileSync(filePath, minifyHTML(html), "utf-8");
         }
       },
     },
