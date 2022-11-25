@@ -14,7 +14,7 @@
     "spelling": "npx yaspeller en -e astro ./src/pages"
   },
   "engines": {
-    "node": ">=16.x"
+    "node": ">=14.x"
   },
   "dependencies": {
     "clsx": "1.2.1"
