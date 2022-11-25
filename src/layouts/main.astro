@@ -1,9 +1,9 @@
 ---
 import css from "../styles/global.css?inline";
 import svgFavicon from "../static/favicon.svg";
-import svgLegacyFavicon from "../static/favicon.ico";
+import svgLegacyFavicon from "../static/favicon.ico?url";
 import svgDevFavicon from "../static/favicon-dev.svg";
-import appleTouchIcon from "../static/apple-touch-icon.png";
+import appleTouchIcon from "../static/apple-touch-icon.png?url";
 
 const favicon =
   process.env.NODE_ENV === "production" ? svgFavicon : svgDevFavicon;
@@ -23,11 +23,6 @@ const favicon =
     />
     <meta name="theme-color" content="rgb(241, 245, 249)" />
     <title>Sergey Garin</title>
-    <link
-      href="https://res.cloudinary.com/"
-      crossorigin="anonymous"
-      rel="preconnect"
-    />
     <meta name="description" content="My contacts and cv" />
     <link itemprop="url" href="https://garin.dev" />
     <link rel="icon" href={svgLegacyFavicon} sizes="any" />

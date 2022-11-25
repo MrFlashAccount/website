@@ -68,6 +68,7 @@ import MainLayout from "layouts/main.astro";
         title="link to my photo"
       >
         <Picture
+          preload
           class="w-32 md:w-64 rounded-full object-cover pointer-events-none"
           src={me}
           widths={[192, 386]}
@@ -79,27 +80,7 @@ import MainLayout from "layouts/main.astro";
           loading="eager"
           width="192"
           height="192"
-        >
-          <source
-            media="(max-width: 767px)"
-            srcset="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_avif,q_70,w_96,dpr_2.0/v1615478867/garin.dev/me.jpg 2x, https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_avif,q_70,w_96,dpr_1.0/v1615478867/garin.dev/me.jpg 1x"
-            type="image/avif"
-          />
-          <source
-            media="(min-width: 768px)"
-            srcset="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_avif,q_70,w_192,dpr_2.0/v1615478867/garin.dev/me.jpg 2x, https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_avif,q_70,w_192,dpr_1.0/v1615478867/garin.dev/me.jpg 1x"
-            type="image/avif"
-          />
-          <img
-            class="w-32 md:w-64 rounded-full object-cover pointer-events-none"
-            height="192"
-            width="192"
-            alt=""
-            role="presentation"
-            srcset="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_auto,q_70,w_192,dpr_2.0/v1615478867/garin.dev/me.jpg 2x"
-            src="https://res.cloudinary.com/mrflashaccount/image/upload/ar_1:1,c_fill,g_auto,f_auto,q_70,w_192/v1615478867/garin.dev/me.jpg"
-          />
-        </Picture>
+        />
       </Link>
     </div>
   </main>
