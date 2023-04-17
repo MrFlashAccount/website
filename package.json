@@ -8,11 +8,11 @@
     "*.css"
   ],
   "scripts": {
-    "start": "npm run dev",
+    "start": "pnpm run dev",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "spelling": "npx yaspeller en -e astro ./src/pages"
+    "spelling": "pnpm yaspeller en -e astro ./src/pages"
   },
   "engines": {
     "node": "^18"
