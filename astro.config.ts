@@ -7,7 +7,6 @@ import posthtml from "posthtml";
 import { transform } from "lightningcss";
 import minifyClassnames from "posthtml-minify-classnames";
 import htmlnano from "htmlnano";
-import { minify, createConfiguration } from "@minify-html/js";
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
