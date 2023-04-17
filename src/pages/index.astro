@@ -2,8 +2,8 @@
 import { Picture } from "@astrojs/image/components";
 import me from "../static/me.jpg";
 import meLink from "../static/me.jpg?url";
-import Link from "components/link.astro";
-import MainLayout from "layouts/main.astro";
+import Link from "../components/link.astro";
+import MainLayout from "../layouts/main.astro";
 ---
 
 <MainLayout>
@@ -55,8 +55,8 @@ import MainLayout from "layouts/main.astro";
           </Link>
           <span role="presentation">|</span>
           <Link href="mailto:job@garin.dev" itemProp="email">
-            Write me a letter&nbsp;💌</Link
-          >
+            Write me a letter&nbsp;💌
+          </Link>
         </div>
       </div>
 
@@ -101,8 +101,10 @@ import MainLayout from "layouts/main.astro";
         <Link
           href="https://twitter.com/mrflashaccount"
           itemProp="sameAs"
-          rel="me">Twitter</Link
+          rel="me"
         >
+          Twitter
+        </Link>
         <span role="presentation">|</span>
         <Link
           href="https://github.com/MrFlashAccount"
