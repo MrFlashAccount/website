@@ -68,7 +68,6 @@ import MainLayout from "../layouts/main.astro";
         title="link to my photo"
       >
         <Picture
-          preload
           class="w-32 md:w-64 rounded-full object-cover pointer-events-none"
           src={me}
           widths={[144, 288]}
@@ -78,8 +77,8 @@ import MainLayout from "../layouts/main.astro";
           alt=""
           role="presentation"
           loading="eager"
-          width="192"
-          height="192"
+          width={192}
+          height={192}
         />
       </Link>
     </div>
