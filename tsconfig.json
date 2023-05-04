@@ -12,8 +12,10 @@
     "lib": ["es2019", "dom"],
     "resolveJsonModule": true,
     "types": ["node", "@astrojs/image/client"],
+    "typeRoots": ["./node_modules/@types", "./src/types", "./src/env.d.ts"],
     "skipLibCheck": true,
-    "noEmit": true
+    "noEmit": true,
+    "allowJs": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "public", "jest"]
