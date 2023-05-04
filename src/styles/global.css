@@ -9,6 +9,18 @@
     U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
     U+FEFF, U+FFFD;
 }
+
+@font-face {
+  font-family: "Lato Fallback";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Arial");
+  ascent-override: 100.88%;
+  descent-override: 21.77%;
+  line-gap-override: 0%;
+  size-adjust: 97.84%;
+}
+
 /* latin */
 @font-face {
   font-family: "Lato";
@@ -21,6 +33,29 @@
     U+FEFF, U+FFFD;
 }
 
+@font-face {
+  font-family: "Lato Fallback";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Arial");
+  ascent-override: 98.27%;
+  descent-override: 21.21%;
+  line-gap-override: 0%;
+  size-adjust: 100.43%;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer utilities {
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}

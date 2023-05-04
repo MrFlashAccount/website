@@ -11,7 +11,7 @@
     "baseUrl": "./src",
     "lib": ["es2019", "dom"],
     "resolveJsonModule": true,
-    "types": ["node"],
+    "types": ["node", "@astrojs/image/client"],
     "skipLibCheck": true,
     "noEmit": true
   },
