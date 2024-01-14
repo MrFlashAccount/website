@@ -1,5 +1,5 @@
 ---
-import { Picture } from "@astrojs/image/components";
+import { Picture } from "astro:assets";
 import me from "../static/me.jpg";
 import meLink from "../static/me.jpg?url";
 import Link from "../components/link.astro";
@@ -7,112 +7,112 @@ import MainLayout from "../layouts/main.astro";
 ---
 
 <MainLayout>
-  <main class="max-w-screen-lg mx-auto px-8 pb-8 min-h-screen">
-    <div
-      role="presentation"
-      class="py-8 md:pt-[20vh] flex flex-col-reverse md:flex-row justify-between place-items-center gap-8 md:gap-12 text-left"
-    >
-      <div role="presentation" class="text-center md:text-left">
-        <h1
-          class="flex flex-col font-medium md:text-5xl text-4xl text-gray-800"
-        >
-          <span class="text-xl">Hi 🙋‍♂️ I'm</span>
-          <span
-            role="presentation"
-            class="block h-10 md:h-14 bg-clip-text animate-move-bg bg-gradient-to-r from-indigo-600 via-pink-500 to-indigo-600 bg-[length:400%] text-transparent"
-          >
-            <span class="font-bold md:text-5xl text-4xl" itemprop="familyName"
-              >Garin</span
-            >
-            <span class="font-bold md:text-5xl text-4xl" itemprop="givenName"
-              >Sergei</span
-            >
-          </span>
-        </h1>
+	<main class="mx-auto min-h-screen max-w-screen-lg px-8 pb-8">
+		<div
+			role="presentation"
+			class="flex flex-col-reverse place-items-center justify-between gap-8 py-8 text-left md:flex-row md:gap-12 md:pt-[20vh]"
+		>
+			<div role="presentation" class="text-center md:text-left">
+				<h1
+					class="flex flex-col text-4xl font-medium text-gray-800 md:text-5xl"
+				>
+					<span class="text-xl">Hi 🙋‍♂️ I'm</span>
+					<span
+						role="presentation"
+						class="block h-10 animate-move-bg bg-gradient-to-r from-indigo-600 via-pink-500 to-indigo-600 bg-[length:400%] bg-clip-text text-transparent md:h-14"
+					>
+						<span class="text-4xl font-bold md:text-5xl" itemprop="familyName"
+							>Garin</span
+						>
+						<span class="text-4xl font-bold md:text-5xl" itemprop="givenName"
+							>Sergei</span
+						>
+					</span>
+				</h1>
 
-        <p class="font-normal text-2xl">
-          a frontend engineer&nbsp;🧑‍💻, geek&nbsp;🤓 and traveler&nbsp;🌎
-        </p>
+				<p class="text-2xl font-normal">
+					a frontend engineer&nbsp;🧑‍💻, geek&nbsp;🤓 and traveler&nbsp;🌎
+				</p>
 
-        <div
-          role="presentation"
-          class="flex flex-col md:flex-row mt-8 md:mt-12 gap-4 md:gap-20 max-w-lg"
-        >
-          <p class="font-normal text-l">
-            I like to craft solid and scalable frontend products with great user
-            experiences.
-          </p>
+				<div
+					role="presentation"
+					class="mt-8 flex max-w-lg flex-col gap-4 md:mt-12 md:flex-row md:gap-20"
+				>
+					<p class="text-l font-normal">
+						I like to craft solid and scalable frontend products with great user
+						experiences.
+					</p>
 
-          <p class="font-normal text-l">
-            Highly skilled at design systems, microfrontends and web
-            performance.
-          </p>
-        </div>
+					<p class="text-l font-normal">
+						Highly skilled at design systems, microfrontends and web
+						performance.
+					</p>
+				</div>
 
-        <div class="flex gap-3 mt-12 text-xl justify-center md:justify-start">
-          <Link href="/cv.pdf" download="Garin Sergey CV.pdf">
-            Curriculum Vitae&nbsp;📃
-          </Link>
-          <span role="presentation">|</span>
-          <Link href="mailto:job@garin.dev" itemProp="email">
-            Write me a letter&nbsp;💌
-          </Link>
-        </div>
-      </div>
+				<div class="mt-12 flex justify-center gap-3 text-xl md:justify-start">
+					<Link href="/cv.pdf" download="Garin Sergey CV.pdf">
+						Curriculum Vitae&nbsp;📃
+					</Link>
+					<span role="presentation">|</span>
+					<Link href="mailto:job@garin.dev" itemProp="email">
+						Write me a letter&nbsp;💌
+					</Link>
+				</div>
+			</div>
 
-      <Link
-        roundRadius="full"
-        class="hover:ring-4 hover:ring-blue-300 focus:ring-4 focus:ring-blue-500 focus:ring-offset-2 transition-shadow rounded-[50%]"
-        target="_blank"
-        href={meLink}
-        title="link to my photo"
-      >
-        <Picture
-          class="w-32 md:w-64 rounded-full object-cover pointer-events-none"
-          src={me}
-          widths={[144, 288]}
-          sizes="(max-width: 767px) 192px, (min-width: 768px) 386px"
-          formats={["avif", "webp", "jpg"]}
-          aspectRatio="1:1"
-          alt=""
-          role="presentation"
-          loading="eager"
-          width={192}
-          height={192}
-        />
-      </Link>
-    </div>
-  </main>
+			<Link
+				roundRadius="full"
+				class="rounded-[50%] transition-shadow hover:ring-4 hover:ring-blue-300 focus:ring-4 focus:ring-blue-500 focus:ring-offset-2"
+				target="_blank"
+				href={meLink}
+				title="link to my photo"
+			>
+				<Picture
+					class="pointer-events-none w-32 rounded-full object-cover md:w-64"
+					src={me}
+					widths={[144, 288]}
+					sizes="(max-width: 767px) 192px, (min-width: 768px) 386px"
+					formats={["avif", "webp", "jpg"]}
+					aspectRatio="1:1"
+					alt=""
+					role="presentation"
+					loading="eager"
+					width={192}
+					height={192}
+				/>
+			</Link>
+		</div>
+	</main>
 
-  <footer
-    class="border-t border-blue-600 mt-10 px:4 md:px-8 py-2 md:py-4 bg-slate-100"
-  >
-    <div
-      class="flex flex-col-reverse md:flex-row place-items-center md:place-content-between max-w-screen-lg mx-auto"
-    >
-      Site is under construction 🚧
+	<footer
+		class="px:4 mt-10 border-t border-blue-600 bg-slate-100 py-2 md:px-8 md:py-4"
+	>
+		<div
+			class="mx-auto flex max-w-screen-lg flex-col-reverse place-items-center md:flex-row md:place-content-between"
+		>
+			Site is under construction 🚧
 
-      <div class="flex gap-2">
-        <Link href="https://t.me/mrflashaccount" itemProp="sameAs" rel="me">
-          Telegram
-        </Link>
-        <span role="presentation">|</span>
-        <Link
-          href="https://twitter.com/mrflashaccount"
-          itemProp="sameAs"
-          rel="me"
-        >
-          Twitter
-        </Link>
-        <span role="presentation">|</span>
-        <Link
-          href="https://github.com/MrFlashAccount"
-          itemProp="sameAs"
-          rel="me"
-        >
-          Github
-        </Link>
-      </div>
-    </div>
-  </footer>
+			<div class="flex gap-2">
+				<Link href="https://t.me/mrflashaccount" itemProp="sameAs" rel="me">
+					Telegram
+				</Link>
+				<span role="presentation">|</span>
+				<Link
+					href="https://twitter.com/mrflashaccount"
+					itemProp="sameAs"
+					rel="me"
+				>
+					Twitter
+				</Link>
+				<span role="presentation">|</span>
+				<Link
+					href="https://github.com/MrFlashAccount"
+					itemProp="sameAs"
+					rel="me"
+				>
+					Github
+				</Link>
+			</div>
+		</div>
+	</footer>
 </MainLayout>
