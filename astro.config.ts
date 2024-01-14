@@ -9,6 +9,7 @@ import htmlnano from "htmlnano";
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
+// https://astro.build/config
 export default defineConfig({
 	outDir: "./public",
 	publicDir: "./src/public/",
@@ -17,18 +18,14 @@ export default defineConfig({
 	adapter: {
 		name: "test",
 		hooks: {
-			"astro:build:done": async ({ dir }) => {
-				const files = readdirSync(fileURLToPath(dir), {
-					withFileTypes: true,
-					encoding: "utf-8",
-				}).filter((dirent) => dirent.isFile() && dirent.name.endsWith(".html"));
+			"astro:build:done": async ({ routes }) => {
+				const files = routes
+					.filter((route) => route.type === "page")
+					.map(({ distURL }) => distURL)
+					.filter((url): url is URL => typeof url !== 'undefined');
 
-				for (const { name } of files) {
-					const filePath = fileURLToPath(new URL(name, dir));
-					const htmlFile = readFileSync(
-						fileURLToPath(new URL(name, dir)),
-						"utf-8",
-					);
+				for (const { pathname } of files) {
+					const htmlFile = readFileSync(pathname, "utf-8");
 
 					const { html } = await posthtml()
 						.use(
@@ -49,6 +46,8 @@ export default defineConfig({
 								removeEmptyAttributes: true,
 								removeRedundantAttributes: true,
 								removeUnusedCss: true,
+								minifySvg: false,
+								minifyCss: false,
 								minifyJs: false,
 								removeComments: true,
 							}),
@@ -70,7 +69,7 @@ export default defineConfig({
 						)
 						.process(htmlFile);
 
-					writeFileSync(filePath, html, "utf-8");
+					writeFileSync(pathname, html, "utf-8");
 				}
 			},
 		},

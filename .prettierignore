@@ -3,5 +3,4 @@ node_modules
 /public
 .env
 /src/public
-
-/app/styles/tailwind.css
+/src/static
