@@ -2,7 +2,6 @@ import {
 	AmbientLight,
 	Camera,
 	Clock,
-	ImageLoader,
 	Mesh,
 	MeshBasicMaterial,
 	PerspectiveCamera,
@@ -14,7 +13,6 @@ import {
 	WebGLRenderer,
 	type BufferGeometry,
 } from "three";
-import earth3Image from "./static/earth-alpha-map.png?url";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { createDotsSphereMesh, spherePointToUV } from "./utils";
 
@@ -164,7 +162,24 @@ export class MyEarth extends HTMLElement {
 		}
 	}
 
-	#loadTextures = () => new ImageLoader().loadAsync(earth3Image);
+	#loadTextures = () =>
+		new Promise<HTMLImageElement>((resolve, reject) => {
+			const img = this.querySelector("img") as HTMLImageElement;
+
+			if (!img) {
+				reject(new Error("Image not found"));
+				return;
+			}
+
+			if (img.complete) {
+				resolve(img);
+				return;
+			}
+
+			img.onload = () => resolve(img);
+			img.onerror = () =>
+				reject(new Error(`Failed to load image ${img.src}`));
+		});
 
 	#handleResize = (width: number, height: number) => {
 		this.#renderer.setSize(width, height);
