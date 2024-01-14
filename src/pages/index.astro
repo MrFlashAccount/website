@@ -2,7 +2,7 @@
 import { Picture } from "astro:assets";
 import me from "../static/me.jpg";
 import meLink from "../static/me.jpg?url";
-import Earth from '../components/earth/earth.astro';
+import Earth from "../components/earth/earth.astro";
 import Link from "../components/link.astro";
 import MainLayout from "../layouts/main.astro";
 ---
@@ -85,13 +85,12 @@ import MainLayout from "../layouts/main.astro";
 		</div>
 	</main>
 
-  <div class="bottom-0 w-[80vh] m-auto min-h-56 h-[40vh] overflow-hidden">
-    <Earth className="flex-none" />
-  </div>
-
+	<div class="bottom-0 m-auto h-[40vh] min-h-56 w-[80vh] overflow-hidden">
+		<Earth className="flex-none" />
+	</div>
 
 	<footer
-		class="hidden px:4 mt-10 border-t border-blue-600 bg-slate-100 py-2 md:px-8 md:py-4"
+		class="px:4 mt-10 hidden border-t border-blue-600 bg-slate-100 py-2 md:px-8 md:py-4"
 	>
 		<div
 			class="mx-auto flex max-w-screen-lg flex-col-reverse place-items-center md:flex-row md:place-content-between"

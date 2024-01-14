@@ -22,7 +22,7 @@ export default defineConfig({
 				const files = routes
 					.filter((route) => route.type === "page")
 					.map(({ distURL }) => distURL)
-					.filter((url): url is URL => typeof url !== 'undefined');
+					.filter((url): url is URL => typeof url !== "undefined");
 
 				for (const { pathname } of files) {
 					const htmlFile = readFileSync(pathname, "utf-8");

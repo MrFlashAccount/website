@@ -2,7 +2,7 @@ import { Vector2, Vector3 } from "three";
 
 export function spherePointToUV(
 	dotCenter: Vector3,
-	sphereCenter: Vector3
+	sphereCenter: Vector3,
 ): Vector2 {
 	// Create a new vector and give it a direction from the center of the sphere
 	// to the center of the dot.
