@@ -3,13 +3,11 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import posthtml from "posthtml";
+import htmlnano from "htmlnano";
 import { transform } from "lightningcss";
 import minifyClassnames from "posthtml-minify-classnames";
-import htmlnano from "htmlnano";
-import { readdirSync, readFileSync, writeFileSync } from "node:fs";
-import { fileURLToPath } from "node:url";
+import { readFileSync, writeFileSync } from "node:fs";
 
-// https://astro.build/config
 export default defineConfig({
 	outDir: "./public",
 	publicDir: "./src/public/",
