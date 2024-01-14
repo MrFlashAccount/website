@@ -2,7 +2,6 @@
 // https://docs.astro.build/reference/configuration-reference
 // @ts-check
 import { defineConfig } from "astro/config";
-import image from "@astrojs/image";
 import posthtml from "posthtml";
 import { transform } from "lightningcss";
 import minifyClassnames from "posthtml-minify-classnames";
@@ -15,7 +14,6 @@ export default defineConfig({
   publicDir: "./src/public/",
   site: "https://garin.dev",
   vite: { build: { assetsInlineLimit: 0 } },
-  integrations: [image()],
   adapter: {
     name: "test",
     hooks: {
@@ -29,7 +27,7 @@ export default defineConfig({
           const filePath = fileURLToPath(new URL(name, dir));
           const htmlFile = readFileSync(
             fileURLToPath(new URL(name, dir)),
-            "utf-8"
+            "utf-8",
           );
 
           const { html } = await posthtml()
@@ -37,7 +35,7 @@ export default defineConfig({
               minifyClassnames({
                 genNameClass: "genNameEmoji",
                 genNameId: "genNameEmoji",
-              })
+              }),
             )
             .use(
               htmlnano({
@@ -53,7 +51,7 @@ export default defineConfig({
                 removeUnusedCss: true,
                 minifyJs: false,
                 removeComments: true,
-              })
+              }),
             )
             .use((tree) =>
               tree.match({ tag: "style" }, (node) => {
@@ -68,7 +66,7 @@ export default defineConfig({
                 }
 
                 return node;
-              })
+              }),
             )
             .process(htmlFile);
 
