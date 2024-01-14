@@ -282,5 +282,3 @@ export class MyEarth extends HTMLElement {
 		this.#camera.lookAt(this.#earth.position);
 	};
 }
-
-customElements.define("my-earth", MyEarth);

@@ -1,5 +1,11 @@
 ---
 import { twMerge } from "tailwind-merge";
+
+interface Props extends HTMLAnchorElement {
+	class?: string;
+	roundRadius?: "none" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "full";
+}
+
 const { class: className, roundRadius, ...rest } = Astro.props;
 ---
 

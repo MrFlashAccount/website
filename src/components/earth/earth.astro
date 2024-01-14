@@ -10,5 +10,7 @@ const { className } = Astro.props;
 
 <my-earth class={twMerge("block aspect-[4/3] w-[100%]", className)}></my-earth>
 <script>
-    import "./my-earth.wc.ts";
+    import {MyEarth} from "./my-earth.wc.ts";
+
+		customElements.define("my-earth", MyEarth);
 </script>
