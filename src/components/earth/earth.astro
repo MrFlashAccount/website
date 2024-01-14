@@ -1,5 +1,4 @@
 ---
-import url from "./my-earth.wc.ts?url";
 import { twMerge } from "tailwind-merge";
 
 interface Props {
@@ -10,4 +9,6 @@ const { className } = Astro.props;
 ---
 
 <my-earth class={twMerge("block aspect-[4/3] w-[100%]", className)}></my-earth>
-<script src={url} type="module"></script>
+<script>
+    import "./my-earth.wc.ts";
+</script>
