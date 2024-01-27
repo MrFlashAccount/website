@@ -1,9 +1,44 @@
 ---
-import { Picture } from "astro:assets";
+import { getImage } from "astro:assets";
 import me from "../static/me.jpg";
-import meLink from "../static/me.jpg?url";
+import meOriginal from "../static/me.jpg?url";
 import Link from "../components/link.astro";
 import MainLayout from "../layouts/main.astro";
+
+const meMobileAvif = await getImage({
+	src: me,
+	format: "avif",
+	width: 128,
+	height: 128,
+	densities: [1, 1.5],
+});
+const meMobileWebp = await getImage({
+	src: me,
+	format: "webp",
+	width: 128,
+	height: 128,
+	densities: [1, 1.5],
+});
+const meDesktopAvif = await getImage({
+	src: me,
+	format: "avif",
+	width: 256,
+	height: 256,
+	densities: [1, 1.5],
+});
+const meDesktopWebp = await getImage({
+	src: me,
+	format: "webp",
+	width: 256,
+	height: 256,
+	densities: [1, 1.5],
+});
+const meFallback = await getImage({
+	src: me,
+	format: "jpg",
+	width: 128,
+	height: 128,
+});
 ---
 
 <MainLayout>
@@ -66,22 +101,41 @@ import MainLayout from "../layouts/main.astro";
 				roundRadius="full"
 				class="rounded-[50%] transition-shadow hover:ring-4 hover:ring-blue-300 focus:ring-4 focus:ring-blue-500 focus:ring-offset-2"
 				target="_blank"
-				href={meLink}
+				href={meOriginal}
 				title="link to my photo"
 			>
-				<Picture
-					class="pointer-events-none w-32 rounded-full object-cover md:w-64"
-					src={me}
-					widths={[144, 288]}
-					sizes="(max-width: 767px) 192px, (min-width: 768px) 386px"
-					formats={["avif", "webp", "jpg"]}
-					aspectRatio="1:1"
-					alt=""
-					role="presentation"
-					loading="eager"
-					width={192}
-					height={192}
-				/>
+				<picture>
+					<source
+						srcset={meMobileAvif.srcSet.attribute}
+						media="(max-width: 767px)"
+						type="image/avif"
+					/>
+					<source
+						srcset={meMobileWebp.srcSet.attribute}
+						media="(max-width: 767px)"
+						type="image/webp"
+					/>
+					<source
+						srcset={meDesktopAvif.srcSet.attribute}
+						media="(min-width: 768px)"
+						type="image/avif"
+					/>
+					<source
+						srcset={meDesktopWebp.srcSet.attribute}
+						media="(min-width: 768px)"
+						type="image/webp"
+					/>
+					<img
+						class="pointer-events-none h-32 w-32 rounded-full object-cover md:h-64 md:w-64"
+						src={meFallback.src}
+						alt=""
+						role="presentation"
+						loading="eager"
+						width={meFallback.attributes.width}
+						height={meFallback.attributes.height}
+						decoding="async"
+					/>
+				</picture>
 			</Link>
 		</div>
 	</main>

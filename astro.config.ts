@@ -22,9 +22,21 @@ export default defineConfig({
 					.map((url) => url.pathname);
 
 				await Promise.all([
-					extractCharsFromHtml(paths).then((chars) =>
+					extractCharsFromHtml(
+						paths,
+						(node) => !node.attrs?.class?.includes("font-semibold"),
+					).then((chars) =>
 						minifyFont(chars, {
-							src: dir.pathname + "_astro/*.otf",
+							src: dir.pathname + "_astro/*-400*.otf",
+							dest: dir.pathname + "_astro/",
+						}),
+					),
+					extractCharsFromHtml(
+						paths,
+						(node) => !!node.attrs?.class?.includes("font-semibold"),
+					).then((chars) =>
+						minifyFont(chars, {
+							src: dir.pathname + "_astro/*-600*.otf",
 							dest: dir.pathname + "_astro/",
 						}),
 					),
