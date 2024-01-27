@@ -1,5 +1,5 @@
 /**
- * @type {import('tailwindcss').TailwindConfig}
+ * @type {import('tailwindcss').Config}
  */
 const config = {
 	content: [
@@ -8,25 +8,11 @@ const config = {
 	],
 	theme: {
 		extend: {
-			fontFamily: {
-				sans: ["OpenRunde", "OpenRunde Fallback"],
-			},
-			keyframes: {
-				"move-bg": {
-					to: {
-						backgroundPosition: "400% 0",
-					},
-				},
-			},
-			animation: {
-				"move-bg": "move-bg 7s infinite linear",
-			},
+			fontFamily: { sans: ["OpenRunde", "OpenRunde Fallback"] },
+			keyframes: { "move-bg": { to: { backgroundPosition: "400% 0" } } },
+			animation: { "move-bg": "move-bg 7s infinite linear" },
 		},
 	},
-	variants: {
-		extend: {},
-	},
-	plugins: [],
 };
 
 module.exports = config;
