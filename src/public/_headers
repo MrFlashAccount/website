@@ -1,2 +1,4 @@
-/assets/*
+/_astro/*
   Cache-Control: public, immutable, max-age=31536000
+/*.html
+  Cache-Control: public, immutable, max-age=86400
