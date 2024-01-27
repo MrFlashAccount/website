@@ -164,21 +164,18 @@ export class MyEarth extends HTMLElement {
 
 	#loadTextures = () =>
 		new Promise<HTMLImageElement>((resolve, reject) => {
-			const img = this.querySelector("img") as HTMLImageElement;
+			const img = this.querySelector("img");
 
 			if (!img) {
-				reject(new Error("Image not found"));
-				return;
+				return reject(new Error("Image not found"));
 			}
 
 			if (img.complete) {
-				resolve(img);
-				return;
+				return resolve(img);
 			}
 
 			img.onload = () => resolve(img);
-			img.onerror = () =>
-				reject(new Error(`Failed to load image ${img.src}`));
+			img.onerror = () => reject(new Error(`Failed to load image ${img.src}`));
 		});
 
 	#handleResize = (width: number, height: number) => {
