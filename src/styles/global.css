@@ -1,47 +1,55 @@
 /* latin */
+
 @font-face {
-	font-family: "Lato";
+	font-family: 'OpenRunde';
 	font-style: normal;
 	font-weight: 400;
 	font-display: swap;
-	src: url(../static/lato-latin-400.woff2) format("woff2");
-	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-		U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-		U+FEFF, U+FFFD;
+	src: url('../static/font/OpenRunde-400.woff2') format('woff2');
 }
 
 @font-face {
-	font-family: "Lato Fallback";
+	font-family: 'OpenRunde Fallback';
 	font-style: normal;
 	font-weight: 400;
-	src: local("Arial");
-	ascent-override: 100.88%;
-	descent-override: 21.77%;
-	line-gap-override: 0%;
-	size-adjust: 97.84%;
+	src: local('Arial');
+	ascent-override: 96.88%;
+	descent-override: 24.15%;
+	line-gap-override: 0.00%;
+	size-adjust: 100.00%;
 }
 
-/* latin */
 @font-face {
-	font-family: "Lato";
+	font-family: 'OpenRunde';
 	font-style: normal;
-	font-weight: 700;
+	font-weight: 600;
 	font-display: swap;
-	src: url(../static/lato-latin-700.woff2) format("woff2");
-	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-		U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-		U+FEFF, U+FFFD;
+	src: url('../static/font/OpenRunde-600.woff2') format('woff2');
 }
 
 @font-face {
-	font-family: "Lato Fallback";
+	font-family: 'OpenRunde Fallback';
+	font-style: normal;
+	font-weight: 600;
+	src: local('Arial');
+	ascent-override: 96.88%;
+	descent-override: 24.15%;
+	line-gap-override: 0.00%;
+	size-adjust: 100.00%;
+}
+
+@font-face {
+	font-family: 'OpenRunde';
 	font-style: normal;
 	font-weight: 400;
-	src: local("Arial");
-	ascent-override: 98.27%;
-	descent-override: 21.21%;
-	line-gap-override: 0%;
-	size-adjust: 100.43%;
+	src: url('../static/font/OpenRunde-400.otf') format('otf');
+}
+
+@font-face {
+	font-family: 'OpenRunde';
+	font-style: normal;
+	font-weight: 600;
+	src: url('../static/font/OpenRunde-600.otf') format('otf');
 }
 
 @tailwind base;
