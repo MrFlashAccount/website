@@ -1,0 +1,27 @@
+---
+import { Picture } from 'astro:assets';
+import Earth from "./static/earth-alpha-map.png";
+import { twMerge } from "tailwind-merge";
+
+interface Props {
+	className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<my-earth class={twMerge("block aspect-[4/3] w-[100%]", className)}>
+	<Picture
+		src={Earth}
+		class="invisible"
+		formats={["webp", "png"]}
+		aspectRatio="2:1"
+		alt=""
+		role="presentation"
+		aria-hidden="true"
+	/>
+</my-earth>
+<script>
+    import {MyEarth} from "./my-earth.wc.ts";
+		customElements.define("my-earth", MyEarth);
+</script>

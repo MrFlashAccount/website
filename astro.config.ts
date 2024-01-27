@@ -17,10 +17,12 @@ export default defineConfig({
 		name: "test",
 		hooks: {
 			"astro:build:done": async ({ routes }) => {
+				if (process.env.NODE_ENV !== "production") return;
+
 				const files = routes
 					.filter((route) => route.type === "page")
 					.map(({ distURL }) => distURL)
-					.filter((url): url is URL => typeof url !== 'undefined');
+					.filter((url): url is URL => typeof url !== "undefined");
 
 				for (const { pathname } of files) {
 					const htmlFile = readFileSync(pathname, "utf-8");

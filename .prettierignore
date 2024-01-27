@@ -3,4 +3,7 @@ node_modules
 /public
 .env
 /src/public
-/src/static
+
+/**/static
+
+*.glsl

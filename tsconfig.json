@@ -1,4 +1,6 @@
 {
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"extends": "astro/tsconfigs/strict",
 	"compilerOptions": {
 		"strictPropertyInitialization": false,
 		"strict": true,
@@ -15,7 +17,7 @@
 		"typeRoots": ["./node_modules/@types", "./src/types", "./src/env.d.ts"],
 		"skipLibCheck": true,
 		"noEmit": true,
-		"allowJs": true
+		"allowJs": true,
 	},
 	"include": ["src/**/*"],
 	"exclude": ["node_modules", "public", "jest"]
