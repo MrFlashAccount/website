@@ -14,7 +14,7 @@ export default defineConfig({
 	adapter: {
 		name: "minify",
 		hooks: {
-			"astro:build:done": async ({ routes, dir, logger }) => {
+			"astro:build:done": async ({ routes, dir }) => {
 				const paths = routes
 					.filter((route) => route.type === "page")
 					.map(({ distURL }) => distURL)
