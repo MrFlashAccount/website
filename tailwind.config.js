@@ -9,7 +9,7 @@ const config = {
 	theme: {
 		extend: {
 			fontFamily: {
-				sans: ["OpenRunde", "Lato", "Lato Fallback"],
+				sans: ["OpenRunde", "OpenRunde Fallback"],
 			},
 			keyframes: {
 				"move-bg": {
