@@ -50,10 +50,10 @@ const meFallback = await getImage({
 				<h1 class="flex flex-col font-medium text-gray-800">
 					<span class="text-xl">Hi 🙋‍♂️ I'm</span>
 					<span
-						class="block animate-move-bg bg-gradient-to-r from-indigo-600 via-pink-500 to-indigo-600 bg-[length:400%] bg-clip-text text-4xl font-semibold text-transparent md:h-14 md:text-5xl"
+						class="block animate-move-bg bg-gradient-to-r from-indigo-600 via-pink-500 to-indigo-600 bg-[length:400%] bg-clip-text text-4xl text-transparent md:h-14 md:text-5xl"
 					>
-						<span itemprop="familyName">Garin</span>
-						<span itemprop="givenName">Sergei</span>
+						<span class="font-semibold" itemprop="familyName">Garin</span>
+						<span class="font-semibold" itemprop="givenName">Sergei</span>
 					</span>
 				</h1>
 
@@ -88,7 +88,7 @@ const meFallback = await getImage({
 
 			<Link
 				roundRadius="full"
-				class="leading-0 rounded-[50%] transition-shadow hover:ring-4 hover:ring-blue-300 focus:ring-4 focus:ring-blue-500 focus:ring-offset-2"
+				class="rounded-[50%] leading-0 transition-shadow hover:ring-4 hover:ring-blue-300 focus:ring-4 focus:ring-blue-500 focus:ring-offset-2"
 				target="_blank"
 				href={meOriginal}
 				title="link to my photo"
