@@ -13,12 +13,7 @@ export async function minifyHtml(pathnames) {
 		const htmlFile = readFileSync(pathname, "utf-8");
 
 		const { html } = await posthtml()
-			.use(
-				minifyClassnames({
-					genNameClass: "genNameEmoji",
-					genNameId: "genNameEmoji",
-				}),
-			)
+			.use(minifyClassnames({ genNameClass: "genName", genNameId: "genName" }))
 			.use(
 				htmlnano({
 					collapseAttributeWhitespace: true,

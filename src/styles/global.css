@@ -57,8 +57,39 @@
 @tailwind utilities;
 
 @layer base {
-	html {
+	html, :host {
 		-webkit-tap-highlight-color: transparent;
+		-webkit-text-size-adjust: 100%;
+		-moz-tab-size: 4;
+		tab-size: 4;
+		font-feature-settings: normal;
+		font-variation-settings: normal;
+		font-family: OpenRunde, OpenRunde Fallback, serif;
+		line-height: 1.5;
+	}
+
+	*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
+		all: unset;
+		display: revert;
+	}
+
+	/* Preferred box-sizing value */
+	*,
+	*::before,
+	*::after {
+		border: 0 solid;
+		box-sizing: border-box;
+	}
+
+	/* Reapply the pointer cursor for anchor tags */
+	a, button {
+		cursor: revert;
+	}
+
+	/* For images to not be able to exceed their container */
+	img {
+		max-inline-size: 100%;
+		max-block-size: 100%;
 	}
 }
 
