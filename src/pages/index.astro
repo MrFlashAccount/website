@@ -47,21 +47,13 @@ const meFallback = await getImage({
 			class="flex flex-col-reverse place-items-center justify-between gap-8 py-8 text-left md:flex-row md:gap-12 md:pt-[20vh]"
 		>
 			<div class="text-center md:text-left">
-				<h1
-					class="flex flex-col text-4xl font-medium text-gray-800 md:text-5xl"
-				>
+				<h1 class="flex flex-col font-medium text-gray-800">
 					<span class="text-xl">Hi 🙋‍♂️ I'm</span>
 					<span
-						class="block h-10 animate-move-bg bg-gradient-to-r from-indigo-600 via-pink-500 to-indigo-600 bg-[length:400%] bg-clip-text text-transparent md:h-14"
+						class="block animate-move-bg bg-gradient-to-r from-indigo-600 via-pink-500 to-indigo-600 bg-[length:400%] bg-clip-text text-4xl font-semibold text-transparent md:h-14 md:text-5xl"
 					>
-						<span
-							class="text-4xl font-semibold md:text-5xl"
-							itemprop="familyName">Garin</span
-						>
-						<span
-							class="text-4xl font-semibold md:text-5xl"
-							itemprop="givenName">Sergei</span
-						>
+						<span itemprop="familyName">Garin</span>
+						<span itemprop="givenName">Sergei</span>
 					</span>
 				</h1>
 
@@ -70,14 +62,14 @@ const meFallback = await getImage({
 				</p>
 
 				<div
-					class="mt-8 flex max-w-lg flex-col gap-4 md:mt-12 md:flex-row md:gap-20"
+					class="mt-6 flex max-w-lg flex-col gap-3 text-lg font-normal md:mt-12 md:flex-row md:gap-10"
 				>
-					<p class="text-l font-normal">
+					<p>
 						I like to craft solid and scalable frontend products with great user
 						experiences.
 					</p>
 
-					<p class="text-l font-normal">
+					<p>
 						Highly skilled at design systems, microfrontends and web
 						performance.
 					</p>
@@ -96,7 +88,7 @@ const meFallback = await getImage({
 
 			<Link
 				roundRadius="full"
-				class="rounded-[50%] transition-shadow hover:ring-4 hover:ring-blue-300 focus:ring-4 focus:ring-blue-500 focus:ring-offset-2"
+				class="leading-0 rounded-[50%] transition-shadow hover:ring-4 hover:ring-blue-300 focus:ring-4 focus:ring-blue-500 focus:ring-offset-2"
 				target="_blank"
 				href={meOriginal}
 				title="link to my photo"
