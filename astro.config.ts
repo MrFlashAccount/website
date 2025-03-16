@@ -10,7 +10,15 @@ export default defineConfig({
 	outDir: "./public",
 	publicDir: "./src/public/",
 	site: "https://garin.dev",
-	vite: { build: { assetsInlineLimit: 0 } },
+	vite: {
+		build: {
+			assetsInlineLimit: 0,
+			// Improved minification with esbuild
+			minify: "esbuild",
+			// Improved CSS handling
+			cssMinify: "lightningcss",
+		},
+	},
 	adapter: {
 		name: "minify",
 		hooks: {
@@ -44,5 +52,9 @@ export default defineConfig({
 				]);
 			},
 		},
+	},
+	// Improved build performance
+	build: {
+		inlineStylesheets: "auto",
 	},
 });
