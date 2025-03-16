@@ -1,5 +1,5 @@
 module.exports = () => {
-	const plugins = [require("tailwindcss")];
+	let plugins = [];
 
 	if (process.env.NODE_ENV === "production") {
 		plugins.push(require("postcss-variable-compress"));

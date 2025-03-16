@@ -8,8 +8,8 @@ const { class: className, roundRadius, ...rest } = Astro.props;
 	{...rest}
 	class={clsx(
 		"underline",
-		roundRadius ? `rounded-${roundRadius}` : "rounded",
-		"focus:outline-none",
+		roundRadius ? `rounded-${roundRadius}` : "rounded-sm",
+		"focus:outline-hidden",
 		"focus:ring-2",
 		"focus:ring-blue-500",
 		"focus:ring-offset-2",

@@ -1,60 +1,110 @@
 /* latin */
 
-@font-face {
-	font-family: "OpenRunde";
-	font-style: normal;
-	font-weight: 400;
-	font-display: swap;
-	src: url("../static/font/OpenRunde-400.woff2") format("woff2");
+@import "tailwindcss";
+
+@source '../**/*.astro';
+
+@theme {
+	--text-*: initial;
+	--text-lg: 18px;
+	--text-lg--line-height: 24px;
+	--text-xl: 20px;
+	--text-xl--line-height: 26px;
+	--text-2xl: 24px;
+	--text-2xl--line-height: 30px;
+	--text-4xl: 36px;
+	--text-4xl--line-height: 44px;
+	--text-5xl: 48px;
+	--text-5xl--line-height: 56px;
+
+	--font-sans: OpenRunde, OpenRunde Fallback;
+
+	--animate-move-bg: move-bg 7s infinite linear;
+
+	--leading-0: 0;
+
+	@keyframes move-bg {
+		to {
+			background-position: 400% 0;
+		}
+	}
 }
 
-@font-face {
-	font-family: "OpenRunde Fallback";
-	font-style: normal;
-	font-weight: 400;
-	src: local("Arial");
-	ascent-override: 96.88%;
-	descent-override: 24.15%;
-	line-gap-override: 0%;
-	size-adjust: 100%;
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-gray-200, currentColor);
+	}
 }
 
-@font-face {
-	font-family: "OpenRunde";
-	font-style: normal;
-	font-weight: 600;
-	font-display: swap;
-	src: url("../static/font/OpenRunde-600.woff2") format("woff2");
+@utility pb-safe {
+	padding-bottom: env(safe-area-inset-bottom);
 }
 
-@font-face {
-	font-family: "OpenRunde Fallback";
-	font-style: normal;
-	font-weight: 600;
-	src: local("Arial");
-	ascent-override: 96.88%;
-	descent-override: 24.15%;
-	line-gap-override: 0%;
-	size-adjust: 100%;
-}
+@layer base {
+	@font-face {
+		font-family: "OpenRunde";
+		font-style: normal;
+		font-weight: 400;
+		font-display: swap;
+		src: url("../static/font/OpenRunde-400.woff2") format("woff2");
+	}
 
-@font-face {
-	font-family: "OpenRunde";
-	font-style: normal;
-	font-weight: 400;
-	src: url("../static/font/OpenRunde-400.otf") format("otf");
-}
+	@font-face {
+		font-family: "OpenRunde Fallback";
+		font-style: normal;
+		font-weight: 400;
+		src: local("Arial");
+		ascent-override: 96.88%;
+		descent-override: 24.15%;
+		line-gap-override: 0%;
+		size-adjust: 100%;
+	}
 
-@font-face {
-	font-family: "OpenRunde";
-	font-style: normal;
-	font-weight: 600;
-	src: url("../static/font/OpenRunde-600.otf") format("otf");
-}
+	@font-face {
+		font-family: "OpenRunde";
+		font-style: normal;
+		font-weight: 600;
+		font-display: swap;
+		src: url("../static/font/OpenRunde-600.woff2") format("woff2");
+	}
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+	@font-face {
+		font-family: "OpenRunde Fallback";
+		font-style: normal;
+		font-weight: 600;
+		src: local("Arial");
+		ascent-override: 96.88%;
+		descent-override: 24.15%;
+		line-gap-override: 0%;
+		size-adjust: 100%;
+	}
+
+	@font-face {
+		font-family: "OpenRunde";
+		font-style: normal;
+		font-weight: 400;
+		src: url("../static/font/OpenRunde-400.otf") format("otf");
+	}
+
+	@font-face {
+		font-family: "OpenRunde";
+		font-style: normal;
+		font-weight: 600;
+		src: url("../static/font/OpenRunde-600.otf") format("otf");
+	}
+}
 
 @layer base {
 	html,
@@ -97,11 +147,5 @@
 	img {
 		max-inline-size: 100%;
 		max-block-size: 100%;
-	}
-}
-
-@layer utilities {
-	.pb-safe {
-		padding-bottom: env(safe-area-inset-bottom);
 	}
 }
