@@ -14,12 +14,12 @@ export default defineConfig({
 	adapter: {
 		name: "minify",
 		hooks: {
-			"astro:build:done": async ({ routes, dir }) => {
-				const paths = routes
-					.filter((route) => route.type === "page")
-					.map(({ distURL }) => distURL)
-					.filter((url): url is URL => typeof url !== "undefined")
-					.map((url) => url.pathname);
+			"astro:build:done": async ({ routes, dir, assets }) => {
+				const paths = [...assets.values()]
+					.filter((urls) => urls.some((url) => url.pathname.endsWith(".html")))
+					.flatMap((urls) => urls.map((url) => url.pathname));
+
+				console.log(JSON.stringify([...assets.entries()], null, 2), paths);
 
 				await Promise.all([
 					extractCharsFromHtml(
