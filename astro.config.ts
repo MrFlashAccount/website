@@ -19,8 +19,6 @@ export default defineConfig({
 					.filter((urls) => urls.some((url) => url.pathname.endsWith(".html")))
 					.flatMap((urls) => urls.map((url) => url.pathname));
 
-				console.log(JSON.stringify([...assets.entries()], null, 2), paths);
-
 				await Promise.all([
 					extractCharsFromHtml(
 						paths,
