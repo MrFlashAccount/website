@@ -1,5 +1,3 @@
-/* latin */
-
 @font-face {
 	font-family: "OpenRunde";
 	font-style: normal;
@@ -36,20 +34,6 @@
 	descent-override: 24.15%;
 	line-gap-override: 0%;
 	size-adjust: 100%;
-}
-
-@font-face {
-	font-family: "OpenRunde";
-	font-style: normal;
-	font-weight: 400;
-	src: url("../static/font/OpenRunde-400.otf") format("otf");
-}
-
-@font-face {
-	font-family: "OpenRunde";
-	font-style: normal;
-	font-weight: 600;
-	src: url("../static/font/OpenRunde-600.otf") format("otf");
 }
 
 @tailwind base;
