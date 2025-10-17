@@ -58,197 +58,176 @@ const skills = [
 	<main class="mx-auto w-full max-w-5xl flex-1 px-6 pb-8 pt-16 md:pt-24">
 		<!-- Hero Section -->
 		<section
-			class="space-y-12 lg:grid lg:grid-cols-[1fr_240px] lg:gap-12 lg:space-y-0"
+			class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-8 lg:grid-cols-[1fr_240px] lg:gap-12"
 		>
-			<!-- Left Column - Content -->
-			<div class="space-y-12 lg:order-1">
-				<!-- Top Section (Mobile layout) -->
-				<div class="space-y-8">
-					<div class="flex items-center gap-4 lg:block lg:space-y-4">
-						<!-- Photo (Mobile only) -->
-						<Link
-							roundRadius="full"
-							class="block flex-shrink-0 rounded-full leading-0 transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-gray-900 focus-visible:ring-offset-4 lg:hidden"
-							target="_blank"
-							href={meOriginal}
-							title="View full photo"
-						>
-							<picture>
-								<source
-									srcset={meMobileAvif.srcSet.attribute}
-									media="(max-width: 767px)"
-									type="image/avif"
-								/>
-								<source
-									srcset={meMobileWebp.srcSet.attribute}
-									media="(max-width: 767px)"
-									type="image/webp"
-								/>
-								<img
-									class="pointer-events-none h-20 w-20 rounded-full border-2 border-gray-200 object-cover md:h-24 md:w-24"
-									src={meFallback.src}
-									alt=""
-									role="presentation"
-									loading="eager"
-									width={meFallback.attributes.width}
-									height={meFallback.attributes.height}
-									decoding="async"
-								/>
-							</picture>
-						</Link>
+			<!-- Profile Photo - appears on left on mobile, right on desktop -->
+			<Link
+				roundRadius="full"
+				class="block flex-shrink-0 rounded-full leading-0 transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-gray-900 focus-visible:ring-offset-4 lg:col-start-2 lg:row-span-4 lg:row-start-1 lg:self-start lg:justify-self-center"
+				target="_blank"
+				href={meOriginal}
+				title="View full photo"
+			>
+				<picture>
+					<source
+						srcset={meMobileAvif.srcSet.attribute}
+						media="(max-width: 1023px)"
+						type="image/avif"
+					/>
+					<source
+						srcset={meMobileWebp.srcSet.attribute}
+						media="(max-width: 1023px)"
+						type="image/webp"
+					/>
+					<source
+						srcset={meDesktopAvif.srcSet.attribute}
+						media="(min-width: 1024px)"
+						type="image/avif"
+					/>
+					<source
+						srcset={meDesktopWebp.srcSet.attribute}
+						media="(min-width: 1024px)"
+						type="image/webp"
+					/>
+					<img
+						id="me-photo"
+						class="pointer-events-none h-20 w-20 rounded-full border-2 border-gray-200 object-cover md:h-24 md:w-24 lg:h-60 lg:w-60"
+						src={meFallback.src}
+						alt=""
+						loading="eager"
+						role="presentation"
+						width={meFallback.attributes.width}
+						height={meFallback.attributes.height}
+						decoding="async"
+					/>
+				</picture>
+			</Link>
 
-						<div>
-							<h1 class="text-3xl text-gray-900 md:text-4xl" itemprop="name">
-								<span class="font-semibold" itemprop="givenName">Sergei</span>
-								<span class="font-semibold" itemprop="familyName">Garin</span>
-							</h1>
-							<p class="mt-1 text-lg text-gray-600 md:text-xl">
-								Senior Frontend Engineer
-							</p>
-						</div>
-					</div>
+			<!-- Name and Title -->
+			<div class="col-start-2 lg:col-start-1">
+				<h1 class="text-3xl text-gray-900 md:text-4xl" itemprop="name">
+					<span class="font-semibold" itemprop="givenName">Sergei</span>
+					<span class="font-semibold" itemprop="familyName">Garin</span>
+				</h1>
+				<p class="mt-1 text-lg text-gray-600 md:text-xl">
+					Senior Frontend Engineer
+				</p>
+			</div>
 
-					<p class="text-lg leading-relaxed text-gray-700 md:text-xl">
-						Senior Frontend Engineer specializing in architecting performant
-						applications that drive business results. Proven track record of
-						achieving dramatic performance gains (10x+) and leading development
-						of revenue-generating features.
-					</p>
-				</div>
+			<!-- Introduction -->
+			<p
+				class="col-span-2 text-lg leading-relaxed text-gray-700 md:text-xl lg:col-span-1"
+			>
+				Senior Frontend Engineer specializing in architecting performant
+				applications that drive business results. Proven track record of
+				achieving dramatic performance gains (10x+) and leading development of
+				revenue-generating features.
+			</p>
 
-				<!-- Skills -->
-				<div class="space-y-3">
-					<h2
-						class="text-sm font-semibold uppercase tracking-wide text-gray-500"
-					>
-						Expertise
-					</h2>
-					<div class="flex flex-wrap gap-2">
-						{
-							skills.map((skill) => (
-								<span class="rounded-full bg-gray-100 px-4 py-1.5 text-sm font-medium text-gray-700">
-									{skill}
-								</span>
-							))
-						}
-					</div>
-				</div>
-
-				<!-- CTA Section -->
-				<div class="flex flex-col gap-3 sm:flex-row">
-					<Link
-						href="mailto:job@garin.dev"
-						itemProp="email"
-						class="inline-flex items-center justify-center gap-2 rounded-full bg-gray-900 px-6 py-3 font-medium text-white no-underline transition-colors hover:bg-gray-800 hover:text-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
-					>
-						Get in touch
-						<svg
-							class="h-4 w-4"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-							></path>
-						</svg>
-					</Link>
-					<Link
-						href="/cv.pdf"
-						download="Sergei Garin CV.pdf"
-						class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-gray-900 bg-white px-6 py-3 font-medium text-gray-900 no-underline transition-colors hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
-					>
-						Download CV
-						<svg
-							class="h-4 w-4"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-							></path>
-						</svg>
-					</Link>
-				</div>
-
-				<!-- Social Links -->
-				<div class="border-t border-gray-200 pt-8">
-					<div class="flex flex-wrap gap-6">
-						<Link
-							href="https://github.com/MrFlashAccount"
-							itemProp="sameAs"
-							rel="me"
-							class="flex items-center gap-2 text-gray-600 transition-colors hover:text-gray-900"
-						>
-							<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-								<path
-									fill-rule="evenodd"
-									d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-									clip-rule="evenodd"></path>
-							</svg>
-							<span>GitHub</span>
-						</Link>
-						<Link
-							href="https://twitter.com/mrflashaccount"
-							itemProp="sameAs"
-							rel="me"
-							class="flex items-center gap-2 text-gray-600 transition-colors hover:text-gray-900"
-						>
-							<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-								<path
-									d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-								></path>
-							</svg>
-							<span>Twitter</span>
-						</Link>
-						<Link
-							href="https://t.me/mrflashaccount"
-							itemProp="sameAs"
-							rel="me"
-							class="flex items-center gap-2 text-gray-600 transition-colors hover:text-gray-900"
-						>
-							<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-								<path
-									d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"
-								></path>
-							</svg>
-							<span>Telegram</span>
-						</Link>
-					</div>
+			<!-- Skills -->
+			<div class="col-span-2 space-y-3 lg:col-span-1">
+				<h2 class="text-sm font-semibold uppercase tracking-wide text-gray-500">
+					Expertise
+				</h2>
+				<div class="flex flex-wrap gap-2">
+					{
+						skills.map((skill) => (
+							<span class="rounded-full bg-gray-100 px-4 py-1.5 text-sm font-medium text-gray-700">
+								{skill}
+							</span>
+						))
+					}
 				</div>
 			</div>
 
-			<!-- Right Column - Photo (Desktop only) -->
-			<div class="hidden lg:order-2 lg:flex lg:items-start lg:justify-center">
+			<!-- CTA Section -->
+			<div class="col-span-2 flex flex-col gap-3 sm:flex-row lg:col-span-1">
 				<Link
-					roundRadius="full"
-					class="block rounded-full leading-0 transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-gray-900 focus-visible:ring-offset-4"
-					target="_blank"
-					href={meOriginal}
-					title="View full photo"
+					href="mailto:job@garin.dev"
+					itemProp="email"
+					class="inline-flex items-center justify-center gap-2 rounded-full bg-gray-900 px-6 py-3 font-medium text-white no-underline transition-colors hover:bg-gray-800 hover:text-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
 				>
-					<picture>
-						<source srcset={meDesktopAvif.srcSet.attribute} type="image/avif" />
-						<source srcset={meDesktopWebp.srcSet.attribute} type="image/webp" />
-						<img
-							class="pointer-events-none h-60 w-60 rounded-full border-2 border-gray-200 object-cover"
-							src={meFallback.src}
-							alt=""
-							role="presentation"
-							loading="eager"
-							width={meFallback.attributes.width}
-							height={meFallback.attributes.height}
-							decoding="async"
-						/>
-					</picture>
+					Get in touch
+					<svg
+						class="h-4 w-4"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke="currentColor"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+						></path>
+					</svg>
 				</Link>
+				<Link
+					href="/cv.pdf"
+					download="Sergei Garin CV.pdf"
+					class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-gray-900 bg-white px-6 py-3 font-medium text-gray-900 no-underline transition-colors hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
+				>
+					Download CV
+					<svg
+						class="h-4 w-4"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke="currentColor"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+						></path>
+					</svg>
+				</Link>
+			</div>
+
+			<!-- Social Links -->
+			<div class="col-span-2 border-t border-gray-200 pt-8 lg:col-span-1">
+				<div class="flex flex-wrap gap-6">
+					<Link
+						href="https://github.com/MrFlashAccount"
+						itemProp="sameAs"
+						rel="me"
+						class="flex items-center gap-2 text-gray-600 transition-colors hover:text-gray-900"
+					>
+						<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+							<path
+								fill-rule="evenodd"
+								d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+								clip-rule="evenodd"></path>
+						</svg>
+						<span>GitHub</span>
+					</Link>
+					<Link
+						href="https://twitter.com/mrflashaccount"
+						itemProp="sameAs"
+						rel="me"
+						class="flex items-center gap-2 text-gray-600 transition-colors hover:text-gray-900"
+					>
+						<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+							<path
+								d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+							></path>
+						</svg>
+						<span>Twitter</span>
+					</Link>
+					<Link
+						href="https://t.me/mrflashaccount"
+						itemProp="sameAs"
+						rel="me"
+						class="flex items-center gap-2 text-gray-600 transition-colors hover:text-gray-900"
+					>
+						<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+							<path
+								d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"
+							></path>
+						</svg>
+						<span>Telegram</span>
+					</Link>
+				</div>
 			</div>
 		</section>
 	</main>
