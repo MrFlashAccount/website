@@ -61,6 +61,7 @@
 		) {
 		all: unset;
 		display: revert;
+		font-family: revert;
 	}
 
 	/* Preferred box-sizing value */
@@ -75,6 +76,19 @@
 	a,
 	button {
 		cursor: revert;
+		font-family: revert;
+	}
+
+	p {
+		text-wrap: pretty;
+	}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		text-wrap: balance;
 	}
 
 	/* For images to not be able to exceed their container */
