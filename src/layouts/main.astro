@@ -13,7 +13,7 @@ const favicon =
 	lang="en"
 	itemtype="https://schema.org/Person"
 	itemscope
-	class="bg-slate-100"
+	class="h-full bg-white"
 >
 	<head>
 		<meta charset="utf-8" />
@@ -22,20 +22,20 @@ const favicon =
 			content="width=device-width, initial-scale=1, shrink-to-fit=no"
 		/>
 		<meta name="theme-color" content="rgb(241, 245, 249)" />
-		<title>Sergey Garin</title>
+		<title>Sergei Garin</title>
 		<meta name="description" content="My contacts and cv" />
 		<link itemprop="url" href="https://garin.dev" />
 		<link rel="icon" href={pngFavicon} />
 		<link rel="icon" href={favicon} type="image/svg+xml" />
 		<link rel="apple-touch-icon" href={appleTouchIcon} />
-		<meta name="author" content="Sergey Garin" />
-		<meta property="og:title" content="Sergey Garin" />
+		<meta name="author" content="Sergei Garin" />
+		<meta property="og:title" content="Sergei Garin" />
 		<meta property="og:description" content="My contacts and cv" />
 		<meta property="og:locale" content="en" />
-		<meta property="og:site_name" content="Sergey Garin" />
+		<meta property="og:site_name" content="Sergei Garin" />
 		<style set:html={css}></style>
 	</head>
-	<body>
+	<body class="flex min-h-full min-w-[320px] flex-col">
 		<slot />
 	</body>
 </html>

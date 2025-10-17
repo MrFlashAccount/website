@@ -1,55 +1,55 @@
 /* latin */
 
 @font-face {
-	font-family: 'OpenRunde';
+	font-family: "OpenRunde";
 	font-style: normal;
 	font-weight: 400;
 	font-display: swap;
-	src: url('../static/font/OpenRunde-400.woff2') format('woff2');
+	src: url("../static/font/OpenRunde-400.woff2") format("woff2");
 }
 
 @font-face {
-	font-family: 'OpenRunde Fallback';
+	font-family: "OpenRunde Fallback";
 	font-style: normal;
 	font-weight: 400;
-	src: local('Arial');
+	src: local("Arial");
 	ascent-override: 96.88%;
 	descent-override: 24.15%;
-	line-gap-override: 0.00%;
-	size-adjust: 100.00%;
+	line-gap-override: 0%;
+	size-adjust: 100%;
 }
 
 @font-face {
-	font-family: 'OpenRunde';
+	font-family: "OpenRunde";
 	font-style: normal;
 	font-weight: 600;
 	font-display: swap;
-	src: url('../static/font/OpenRunde-600.woff2') format('woff2');
+	src: url("../static/font/OpenRunde-600.woff2") format("woff2");
 }
 
 @font-face {
-	font-family: 'OpenRunde Fallback';
+	font-family: "OpenRunde Fallback";
 	font-style: normal;
 	font-weight: 600;
-	src: local('Arial');
+	src: local("Arial");
 	ascent-override: 96.88%;
 	descent-override: 24.15%;
-	line-gap-override: 0.00%;
-	size-adjust: 100.00%;
+	line-gap-override: 0%;
+	size-adjust: 100%;
 }
 
 @font-face {
-	font-family: 'OpenRunde';
+	font-family: "OpenRunde";
 	font-style: normal;
 	font-weight: 400;
-	src: url('../static/font/OpenRunde-400.otf') format('otf');
+	src: url("../static/font/OpenRunde-400.otf") format("otf");
 }
 
 @font-face {
-	font-family: 'OpenRunde';
+	font-family: "OpenRunde";
 	font-style: normal;
 	font-weight: 600;
-	src: url('../static/font/OpenRunde-600.otf') format('otf');
+	src: url("../static/font/OpenRunde-600.otf") format("otf");
 }
 
 @tailwind base;
@@ -57,18 +57,24 @@
 @tailwind utilities;
 
 @layer base {
-	html, :host {
+	html,
+	:host {
 		-webkit-tap-highlight-color: transparent;
 		-webkit-text-size-adjust: 100%;
 		-moz-tab-size: 4;
 		tab-size: 4;
 		font-feature-settings: normal;
 		font-variation-settings: normal;
-		font-family: OpenRunde, OpenRunde Fallback, serif;
+		font-family:
+			OpenRunde,
+			OpenRunde Fallback,
+			serif;
 		line-height: 1.5;
 	}
 
-	*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
+	*:where(
+			:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)
+		) {
 		all: unset;
 		display: revert;
 	}
@@ -82,7 +88,8 @@
 	}
 
 	/* Reapply the pointer cursor for anchor tags */
-	a, button {
+	a,
+	button {
 		cursor: revert;
 	}
 
