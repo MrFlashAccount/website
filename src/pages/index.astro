@@ -8,156 +8,255 @@ import MainLayout from "../layouts/main.astro";
 const meMobileAvif = await getImage({
 	src: me,
 	format: "avif",
-	width: 128,
-	height: 128,
+	width: 160,
+	height: 160,
 	densities: [1, 1.5],
 });
 const meMobileWebp = await getImage({
 	src: me,
 	format: "webp",
-	width: 128,
-	height: 128,
+	width: 160,
+	height: 160,
 	densities: [1, 1.5],
 });
 const meDesktopAvif = await getImage({
 	src: me,
 	format: "avif",
-	width: 256,
-	height: 256,
+	width: 280,
+	height: 280,
 	densities: [1, 1.5],
 });
 const meDesktopWebp = await getImage({
 	src: me,
 	format: "webp",
-	width: 256,
-	height: 256,
+	width: 280,
+	height: 280,
 	densities: [1, 1.5],
 });
 const meFallback = await getImage({
 	src: me,
 	format: "jpg",
-	width: 128,
-	height: 128,
+	width: 160,
+	height: 160,
 });
+
+const skills = [
+	"TypeScript",
+	"React",
+	"Next.js",
+	"Node.js",
+	"Tailwind",
+	"Design Systems",
+	"Microfrontends",
+	"Web Performance",
+	"Accessibility",
+	"Testing",
+];
 ---
 
 <MainLayout>
-	<main class="mx-auto min-h-screen max-w-screen-lg px-8 pb-8">
-		<div
-			class="flex flex-col-reverse place-items-center justify-between gap-8 py-8 text-left md:flex-row md:gap-12 md:pt-[20vh]"
+	<main class="mx-auto w-full max-w-5xl flex-1 px-6 pb-8 pt-16 md:pt-24">
+		<!-- Hero Section -->
+		<section
+			class="space-y-12 lg:grid lg:grid-cols-[1fr_240px] lg:gap-12 lg:space-y-0"
 		>
-			<div class="text-center md:text-left">
-				<h1 class="flex flex-col font-medium text-gray-800">
-					<span class="text-xl">Hi 🙋‍♂️ I'm</span>
-					<span
-						class="block animate-move-bg bg-gradient-to-r from-indigo-600 via-pink-500 to-indigo-600 bg-[length:400%] bg-clip-text text-4xl text-transparent md:h-14 md:text-5xl"
-					>
-						<span class="font-semibold" itemprop="familyName">Garin</span>
-						<span class="font-semibold" itemprop="givenName">Sergei</span>
-					</span>
-				</h1>
+			<!-- Left Column - Content -->
+			<div class="space-y-12 lg:order-1">
+				<!-- Top Section (Mobile layout) -->
+				<div class="space-y-8">
+					<div class="flex items-center gap-4 lg:block lg:space-y-4">
+						<!-- Photo (Mobile only) -->
+						<Link
+							roundRadius="full"
+							class="block flex-shrink-0 rounded-full leading-0 transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-gray-900 focus-visible:ring-offset-4 lg:hidden"
+							target="_blank"
+							href={meOriginal}
+							title="View full photo"
+						>
+							<picture>
+								<source
+									srcset={meMobileAvif.srcSet.attribute}
+									media="(max-width: 767px)"
+									type="image/avif"
+								/>
+								<source
+									srcset={meMobileWebp.srcSet.attribute}
+									media="(max-width: 767px)"
+									type="image/webp"
+								/>
+								<img
+									class="pointer-events-none h-20 w-20 rounded-full border-2 border-gray-200 object-cover md:h-24 md:w-24"
+									src={meFallback.src}
+									alt=""
+									role="presentation"
+									loading="eager"
+									width={meFallback.attributes.width}
+									height={meFallback.attributes.height}
+									decoding="async"
+								/>
+							</picture>
+						</Link>
 
-				<p class="text-2xl font-normal">
-					a frontend engineer&nbsp;🧑‍💻, geek&nbsp;🤓 and traveler&nbsp;🌎
-				</p>
+						<div>
+							<h1 class="text-3xl text-gray-900 md:text-4xl" itemprop="name">
+								<span class="font-semibold" itemprop="givenName">Sergei</span>
+								<span class="font-semibold" itemprop="familyName">Garin</span>
+							</h1>
+							<p class="mt-1 text-lg text-gray-600 md:text-xl">
+								Senior Frontend Engineer
+							</p>
+						</div>
+					</div>
 
-				<div
-					class="mt-6 flex max-w-lg flex-col gap-3 text-lg font-normal md:mt-12 md:flex-row md:gap-10"
-				>
-					<p>
-						I like to craft solid and scalable frontend products with great user
-						experiences.
-					</p>
-
-					<p>
-						Highly skilled at design systems, microfrontends and web
-						performance.
+					<p class="text-lg leading-relaxed text-gray-700 md:text-xl">
+						Senior Frontend Engineer specializing in architecting performant
+						applications that drive business results. Proven track record of
+						achieving dramatic performance gains (10x+) and leading development
+						of revenue-generating features.
 					</p>
 				</div>
 
-				<div class="mt-12 flex justify-center gap-3 text-xl md:justify-start">
-					<Link href="/cv.pdf" download="Garin Sergey CV.pdf">
-						Curriculum Vitae&nbsp;📃
+				<!-- Skills -->
+				<div class="space-y-3">
+					<h2
+						class="text-sm font-semibold uppercase tracking-wide text-gray-500"
+					>
+						Expertise
+					</h2>
+					<div class="flex flex-wrap gap-2">
+						{
+							skills.map((skill) => (
+								<span class="rounded-full bg-gray-100 px-4 py-1.5 text-sm font-medium text-gray-700">
+									{skill}
+								</span>
+							))
+						}
+					</div>
+				</div>
+
+				<!-- CTA Section -->
+				<div class="flex flex-col gap-3 sm:flex-row">
+					<Link
+						href="mailto:job@garin.dev"
+						itemProp="email"
+						class="inline-flex items-center justify-center gap-2 rounded-full bg-gray-900 px-6 py-3 font-medium text-white no-underline transition-colors hover:bg-gray-800 hover:text-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
+					>
+						Get in touch
+						<svg
+							class="h-4 w-4"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+							></path>
+						</svg>
 					</Link>
-					<span role="presentation">|</span>
-					<Link href="mailto:job@garin.dev" itemProp="email">
-						Write me a letter&nbsp;💌
+					<Link
+						href="/cv.pdf"
+						download="Sergei Garin CV.pdf"
+						class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-gray-900 bg-white px-6 py-3 font-medium text-gray-900 no-underline transition-colors hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
+					>
+						Download CV
+						<svg
+							class="h-4 w-4"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+							></path>
+						</svg>
 					</Link>
+				</div>
+
+				<!-- Social Links -->
+				<div class="border-t border-gray-200 pt-8">
+					<div class="flex flex-wrap gap-6">
+						<Link
+							href="https://github.com/MrFlashAccount"
+							itemProp="sameAs"
+							rel="me"
+							class="flex items-center gap-2 text-gray-600 transition-colors hover:text-gray-900"
+						>
+							<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+								<path
+									fill-rule="evenodd"
+									d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+									clip-rule="evenodd"></path>
+							</svg>
+							<span>GitHub</span>
+						</Link>
+						<Link
+							href="https://twitter.com/mrflashaccount"
+							itemProp="sameAs"
+							rel="me"
+							class="flex items-center gap-2 text-gray-600 transition-colors hover:text-gray-900"
+						>
+							<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+								<path
+									d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+								></path>
+							</svg>
+							<span>Twitter</span>
+						</Link>
+						<Link
+							href="https://t.me/mrflashaccount"
+							itemProp="sameAs"
+							rel="me"
+							class="flex items-center gap-2 text-gray-600 transition-colors hover:text-gray-900"
+						>
+							<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+								<path
+									d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"
+								></path>
+							</svg>
+							<span>Telegram</span>
+						</Link>
+					</div>
 				</div>
 			</div>
 
-			<Link
-				roundRadius="full"
-				class="rounded-[50%] leading-0 transition-shadow hover:ring-4 hover:ring-blue-300 focus:ring-4 focus:ring-blue-500 focus:ring-offset-2"
-				target="_blank"
-				href={meOriginal}
-				title="link to my photo"
-			>
-				<picture>
-					<source
-						srcset={meMobileAvif.srcSet.attribute}
-						media="(max-width: 767px)"
-						type="image/avif"
-					/>
-					<source
-						srcset={meMobileWebp.srcSet.attribute}
-						media="(max-width: 767px)"
-						type="image/webp"
-					/>
-					<source
-						srcset={meDesktopAvif.srcSet.attribute}
-						media="(min-width: 768px)"
-						type="image/avif"
-					/>
-					<source
-						srcset={meDesktopWebp.srcSet.attribute}
-						media="(min-width: 768px)"
-						type="image/webp"
-					/>
-					<img
-						class="pointer-events-none h-32 w-32 rounded-full object-cover md:h-64 md:w-64"
-						src={meFallback.src}
-						alt=""
-						role="presentation"
-						loading="eager"
-						width={meFallback.attributes.width}
-						height={meFallback.attributes.height}
-						decoding="async"
-					/>
-				</picture>
-			</Link>
-		</div>
+			<!-- Right Column - Photo (Desktop only) -->
+			<div class="hidden lg:order-2 lg:flex lg:items-start lg:justify-center">
+				<Link
+					roundRadius="full"
+					class="block rounded-full leading-0 transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-gray-900 focus-visible:ring-offset-4"
+					target="_blank"
+					href={meOriginal}
+					title="View full photo"
+				>
+					<picture>
+						<source srcset={meDesktopAvif.srcSet.attribute} type="image/avif" />
+						<source srcset={meDesktopWebp.srcSet.attribute} type="image/webp" />
+						<img
+							class="pointer-events-none h-60 w-60 rounded-full border-2 border-gray-200 object-cover"
+							src={meFallback.src}
+							alt=""
+							role="presentation"
+							loading="eager"
+							width={meFallback.attributes.width}
+							height={meFallback.attributes.height}
+							decoding="async"
+						/>
+					</picture>
+				</Link>
+			</div>
+		</section>
 	</main>
 
-	<footer
-		class="px:4 mt-10 border-t border-blue-600 bg-slate-100 py-2 md:px-8 md:py-4"
-	>
-		<div
-			class="mx-auto flex max-w-screen-lg flex-col-reverse place-items-center md:flex-row md:place-content-between"
-		>
-			Site is under construction 🚧
-
-			<div class="flex gap-2">
-				<Link href="https://t.me/mrflashaccount" itemProp="sameAs" rel="me">
-					Telegram
-				</Link>
-				<span role="presentation">|</span>
-				<Link
-					href="https://twitter.com/mrflashaccount"
-					itemProp="sameAs"
-					rel="me"
-				>
-					Twitter
-				</Link>
-				<span role="presentation">|</span>
-				<Link
-					href="https://github.com/MrFlashAccount"
-					itemProp="sameAs"
-					rel="me"
-				>
-					Github
-				</Link>
-			</div>
-		</div>
+	<!-- Footer -->
+	<footer class="w-full border-t border-gray-200 bg-gray-50 px-6 py-8">
+		<p class="text-center text-sm text-gray-500">
+			© {new Date().getFullYear()} Sergei Garin
+		</p>
 	</footer>
 </MainLayout>

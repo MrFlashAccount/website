@@ -15,14 +15,14 @@
 		"spelling": "npx yaspeller en -e astro ./src/pages"
 	},
 	"engines": {
-		"node": "^20"
+		"node": "^22"
 	},
 	"dependencies": {
 		"clsx": "1.2.1"
 	},
 	"devDependencies": {
 		"@types/node": "20.11.7",
-		"astro": "4.2.6",
+		"astro": "5.14.5",
 		"fast-glob": "3.3.2",
 		"fontmin": "1.0.1",
 		"gulp-rename": "2.0.0",
@@ -44,5 +44,6 @@
 		"last 2 chrome version",
 		"last 2 safari version",
 		"last 2 firefox version"
-	]
+	],
+	"packageManager": "pnpm@10.18.3+sha512.bbd16e6d7286fd7e01f6b3c0b3c932cda2965c06a908328f74663f10a9aea51f1129eea615134bf992831b009eabe167ecb7008b597f40ff9bc75946aadfb08d"
 }
