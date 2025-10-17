@@ -55,15 +55,15 @@ const skills = [
 ---
 
 <MainLayout>
-	<main class="mx-auto w-full max-w-5xl flex-1 px-6 pb-8 pt-16 md:pt-24">
+	<main class="mx-auto w-full max-w-5xl flex-1 px-6 pb-12 pt-16 md:pt-24">
 		<!-- Hero Section -->
 		<section
-			class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-8 lg:grid-cols-[1fr_240px] lg:gap-12"
+			class="grid grid-cols-[auto_1fr] gap-x-6 gap-y-8 lg:grid-cols-[1fr_240px] lg:gap-12"
 		>
 			<!-- Profile Photo - appears on left on mobile, right on desktop -->
 			<Link
 				roundRadius="full"
-				class="block flex-shrink-0 rounded-full leading-0 transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-gray-900 focus-visible:ring-offset-4 lg:col-start-2 lg:row-span-4 lg:row-start-1 lg:self-start lg:justify-self-center"
+				class="block flex-shrink-0 rounded-full leading-0 transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black focus-visible:ring-offset-2 lg:col-start-2 lg:row-span-4 lg:row-start-1 lg:self-start lg:justify-self-center"
 				target="_blank"
 				href={meOriginal}
 				title="View full photo"
@@ -91,7 +91,7 @@ const skills = [
 					/>
 					<img
 						id="me-photo"
-						class="pointer-events-none h-20 w-20 rounded-full border-2 border-gray-200 object-cover md:h-24 md:w-24 lg:h-60 lg:w-60"
+						class="pointer-events-none h-20 w-20 rounded-full border border-gray-300 object-cover md:h-24 md:w-24 lg:h-60 lg:w-60"
 						src={meFallback.src}
 						alt=""
 						loading="eager"
@@ -105,18 +105,18 @@ const skills = [
 
 			<!-- Name and Title -->
 			<div class="col-start-2 lg:col-start-1">
-				<h1 class="text-3xl text-gray-900 md:text-4xl" itemprop="name">
+				<h1 class="text-3xl text-black md:text-4xl" itemprop="name">
 					<span class="font-semibold" itemprop="givenName">Sergei</span>
 					<span class="font-semibold" itemprop="familyName">Garin</span>
 				</h1>
-				<p class="mt-1 text-lg text-gray-600 md:text-xl">
+				<p class="mt-2 text-lg text-gray-600 md:text-xl">
 					Senior Frontend Engineer
 				</p>
 			</div>
 
 			<!-- Introduction -->
 			<p
-				class="col-span-2 text-lg leading-relaxed text-gray-700 md:text-xl lg:col-span-1"
+				class="col-span-2 text-lg leading-relaxed text-gray-600 md:text-xl lg:col-span-1"
 			>
 				Senior Frontend Engineer specializing in architecting performant
 				applications that drive business results. Proven track record of
@@ -125,14 +125,14 @@ const skills = [
 			</p>
 
 			<!-- Skills -->
-			<div class="col-span-2 space-y-3 lg:col-span-1">
-				<h2 class="text-sm font-semibold uppercase tracking-wide text-gray-500">
+			<div class="col-span-2 space-y-4 lg:col-span-1">
+				<h2 class="text-sm font-semibold uppercase tracking-wide text-gray-600">
 					Expertise
 				</h2>
 				<div class="flex flex-wrap gap-2">
 					{
 						skills.map((skill) => (
-							<span class="rounded-full bg-gray-100 px-4 py-1.5 text-sm font-medium text-gray-700">
+							<span class="rounded-full border border-gray-300 bg-white px-4 py-2 text-sm text-black">
 								{skill}
 							</span>
 						))
@@ -141,15 +141,15 @@ const skills = [
 			</div>
 
 			<!-- CTA Section -->
-			<div class="col-span-2 flex flex-col gap-3 sm:flex-row lg:col-span-1">
+			<div class="col-span-2 flex flex-col gap-4 sm:flex-row lg:col-span-1">
 				<Link
 					href="mailto:job@garin.dev"
 					itemProp="email"
-					class="inline-flex items-center justify-center gap-2 rounded-full bg-gray-900 px-6 py-3 font-medium text-white no-underline transition-colors hover:bg-gray-800 hover:text-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
+					class="inline-flex items-center justify-center gap-2 rounded-full bg-black px-6 py-4 font-semibold text-white no-underline transition-colors hover:bg-gray-600 hover:text-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black focus-visible:ring-offset-2"
 				>
 					Get in touch
 					<svg
-						class="h-4 w-4"
+						class="h-5 w-5"
 						fill="none"
 						viewBox="0 0 24 24"
 						stroke="currentColor"
@@ -165,11 +165,11 @@ const skills = [
 				<Link
 					href="/cv.pdf"
 					download="Sergei Garin CV.pdf"
-					class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-gray-900 bg-white px-6 py-3 font-medium text-gray-900 no-underline transition-colors hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
+					class="inline-flex items-center justify-center gap-2 rounded-full border border-black bg-white px-6 py-4 font-semibold text-black no-underline transition-colors hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black focus-visible:ring-offset-2"
 				>
 					Download CV
 					<svg
-						class="h-4 w-4"
+						class="h-5 w-5"
 						fill="none"
 						viewBox="0 0 24 24"
 						stroke="currentColor"
@@ -185,13 +185,13 @@ const skills = [
 			</div>
 
 			<!-- Social Links -->
-			<div class="col-span-2 border-t border-gray-200 pt-8 lg:col-span-1">
-				<div class="flex flex-wrap gap-6">
+			<div class="col-span-2 border-t border-gray-300 pt-8 lg:col-span-1">
+				<div class="flex flex-wrap gap-8">
 					<Link
 						href="https://github.com/MrFlashAccount"
 						itemProp="sameAs"
 						rel="me"
-						class="flex items-center gap-2 text-gray-600 transition-colors hover:text-gray-900"
+						class="flex items-center gap-2 text-gray-600 transition-colors hover:text-black"
 					>
 						<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
 							<path
@@ -205,7 +205,7 @@ const skills = [
 						href="https://twitter.com/mrflashaccount"
 						itemProp="sameAs"
 						rel="me"
-						class="flex items-center gap-2 text-gray-600 transition-colors hover:text-gray-900"
+						class="flex items-center gap-2 text-gray-600 transition-colors hover:text-black"
 					>
 						<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
 							<path
@@ -218,7 +218,7 @@ const skills = [
 						href="https://t.me/mrflashaccount"
 						itemProp="sameAs"
 						rel="me"
-						class="flex items-center gap-2 text-gray-600 transition-colors hover:text-gray-900"
+						class="flex items-center gap-2 text-gray-600 transition-colors hover:text-black"
 					>
 						<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
 							<path
@@ -233,8 +233,8 @@ const skills = [
 	</main>
 
 	<!-- Footer -->
-	<footer class="pb-safe w-full border-t border-gray-200 bg-gray-50 px-6 py-8">
-		<p class="text-center text-sm text-gray-500">
+	<footer class="w-full border-t border-gray-300 bg-gray-100 px-6 py-4">
+		<p class="pb-safe text-center text-sm text-gray-600">
 			© {new Date().getFullYear()} Sergei Garin
 		</p>
 	</footer>
