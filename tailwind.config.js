@@ -96,6 +96,9 @@ const config = {
 		preflight: false,
 		filter: false,
 	},
+	experimental: {
+		optimizeUniversalDefaults: true,
+	},
 };
 
 module.exports = config;
