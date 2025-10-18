@@ -1,6 +1,6 @@
 ---
 import { getImage } from "astro:assets";
-import me from "../static/me.jpg";
+import me from "../static/me_cropped.jpg";
 import meOriginal from "../static/me.jpg?url";
 import Link from "../components/link.astro";
 import MainLayout from "../layouts/main.astro";
@@ -8,8 +8,8 @@ import MainLayout from "../layouts/main.astro";
 const meMobileAvif = await getImage({
 	src: me,
 	format: "avif",
-	width: 80,
-	height: 80,
+	width: 120,
+	height: 120,
 	densities: [1, 1.5],
 });
 const meDesktopAvif = await getImage({
@@ -65,7 +65,7 @@ const skills = [
 						type="image/avif"
 					/>
 					<img
-						class="pointer-events-none h-20 w-20 rounded-full border border-gray-300 object-cover md:h-24 md:w-24 lg:h-60 lg:w-60"
+						class="pointer-events-none h-20 w-20 rounded-full object-cover md:h-24 md:w-24 lg:h-60 lg:w-60"
 						src={meFallback.src}
 						alt=""
 						loading="eager"
@@ -74,6 +74,7 @@ const skills = [
 						height={meFallback.attributes.height}
 						decoding="async"
 					/>
+					<script is:inline type="module"></script>
 				</picture>
 			</Link>
 
