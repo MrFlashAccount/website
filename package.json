@@ -33,8 +33,7 @@
 		"prettier-plugin-astro": "0.13.0",
 		"prettier-plugin-tailwindcss": "0.5.11",
 		"tailwindcss": "3.4.1",
-		"typescript": "5.3.3",
-		"yaspeller": "10.0.1"
+		"typescript": "5.3.3"
 	},
 	"browserslist": [
 		"last 2 chrome version",
