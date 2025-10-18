@@ -14,7 +14,7 @@ export default defineConfig({
 	adapter: {
 		name: "minify",
 		hooks: {
-			"astro:build:done": async ({ routes, dir, assets }) => {
+			"astro:build:done": async ({ dir, assets }) => {
 				const paths = [...assets.values()]
 					.filter((urls) => urls.some((url) => url.pathname.endsWith(".html")))
 					.flatMap((urls) => urls.map((url) => url.pathname));

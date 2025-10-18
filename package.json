@@ -17,9 +17,7 @@
 	"engines": {
 		"node": "^22"
 	},
-	"dependencies": {
-		"clsx": "1.2.1"
-	},
+	"dependencies": {},
 	"devDependencies": {
 		"@types/node": "20.11.7",
 		"astro": "5.14.5",

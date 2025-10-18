@@ -42,18 +42,20 @@ const skills = [
 ---
 
 <MainLayout>
-	<main class="mx-auto w-full max-w-5xl flex-1 px-6 pb-12 pt-16 md:pt-24">
+	<main
+		class="mx-auto w-full max-w-5xl flex-1 px-6 pb-12 pt-16 text-sm text-gray-600 md:pt-24"
+	>
 		<section
 			class="grid grid-cols-[auto_1fr] gap-x-6 gap-y-8 lg:grid-cols-[1fr_240px] lg:gap-12"
 		>
 			<Link
 				roundRadius="full"
-				class="block flex-shrink-0 rounded-full leading-0 transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black focus-visible:ring-offset-2 lg:col-start-2 lg:row-span-4 lg:row-start-1 lg:self-start lg:justify-self-center"
+				class="flex flex-shrink-0 rounded-full transition-transform duration-200 ease-in-out hover:scale-105 lg:col-start-2 lg:row-span-4 lg:row-start-1 lg:self-start lg:justify-self-center"
 				target="_blank"
 				href={meOriginal}
 				title="View full photo"
 			>
-				<picture>
+				<picture class="contents">
 					<source
 						srcset={meMobileAvif.srcSet.attribute}
 						media="(max-width: 1023px)"
@@ -78,19 +80,15 @@ const skills = [
 				</picture>
 			</Link>
 
-			<div class="col-start-2 lg:col-start-1">
+			<div class="col-start-2 my-auto lg:col-start-1">
 				<h1 class="text-3xl text-black md:text-4xl" itemprop="name">
 					<span class="font-semibold" itemprop="givenName">Sergei</span>
 					<span class="font-semibold" itemprop="familyName">Garin</span>
 				</h1>
-				<p class="mt-2 text-lg text-gray-600 md:text-xl">
-					Senior Frontend Engineer
-				</p>
+				<p class="mt-1.5 text-lg md:text-xl">Senior Frontend Engineer</p>
 			</div>
 
-			<p
-				class="col-span-2 text-lg leading-relaxed text-gray-600 md:text-xl lg:col-span-1"
-			>
+			<p class="col-span-2 text-lg leading-relaxed md:text-xl lg:col-span-1">
 				Senior Frontend Engineer specializing in architecting performant
 				applications that drive business results. Proven track record of
 				achieving dramatic performance gains (10x+) and leading development of
@@ -98,13 +96,11 @@ const skills = [
 			</p>
 
 			<div class="col-span-2 space-y-4 lg:col-span-1">
-				<h2 class="text-sm font-semibold uppercase tracking-wide text-gray-600">
-					Expertise
-				</h2>
+				<h2 class="font-semibold tracking-wide">EXPERTISE</h2>
 				<div class="flex flex-wrap gap-2">
 					{
 						skills.map((skill) => (
-							<span class="rounded-full border border-gray-300 bg-white px-4 py-2 text-sm text-black">
+							<span class="rounded-full border border-gray-300 bg-white px-4 py-2  text-black">
 								{skill}
 							</span>
 						))
@@ -161,7 +157,7 @@ const skills = [
 						href="https://github.com/MrFlashAccount"
 						itemProp="sameAs"
 						rel="me"
-						class="flex items-center gap-2 text-gray-600 transition-colors hover:text-black"
+						class="flex items-center gap-2 transition-colors hover:text-black"
 					>
 						<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
 							<path
@@ -175,7 +171,7 @@ const skills = [
 						href="https://twitter.com/mrflashaccount"
 						itemProp="sameAs"
 						rel="me"
-						class="flex items-center gap-2 text-gray-600 transition-colors hover:text-black"
+						class="flex items-center gap-2 transition-colors hover:text-black"
 					>
 						<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
 							<path
@@ -188,7 +184,7 @@ const skills = [
 						href="https://t.me/mrflashaccount"
 						itemProp="sameAs"
 						rel="me"
-						class="flex items-center gap-2 text-gray-600 transition-colors hover:text-black"
+						class="flex items-center gap-2 transition-colors hover:text-black"
 					>
 						<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
 							<path
@@ -202,9 +198,16 @@ const skills = [
 		</section>
 	</main>
 
-	<footer class="w-full border-t border-gray-300 bg-gray-100 px-6 py-4">
-		<p class="pb-safe text-center text-sm text-gray-600">
-			© {new Date().getFullYear()} Sergei Garin
+	<footer
+		class="relative w-full border-t border-gray-300 bg-gray-100 px-6 py-4"
+	>
+		<p class="pb-safe text-center">
+			© <span>
+				<script is:inline>
+					document.currentScript.parentNode.textContent =
+						new Date().getFullYear();
+				</script>
+			</span> Sergei Garin
 		</p>
 	</footer>
 </MainLayout>

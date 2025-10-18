@@ -6,6 +6,7 @@ const IGNORED_TAGS = [
 	"script",
 	"noscript",
 	"svg",
+	"path",
 	"img",
 	"iframe",
 	"meta",
@@ -26,7 +27,9 @@ export async function extractCharsFromHtml(pathnames, filter = () => true) {
 	 * @param {import("posthtml").Node} node
 	 */
 	function walk(node) {
-		if (node.content) {
+		if (typeof node === "string") {
+			allText += node.trim();
+		} else if (node.content) {
 			node.content.forEach((child) => {
 				if (typeof child === "string") {
 					if (DYNAMIC_TAGS.includes(node.tag)) {
@@ -34,19 +37,15 @@ export async function extractCharsFromHtml(pathnames, filter = () => true) {
 					}
 
 					if (filter(node) && !IGNORED_TAGS.includes(node.tag)) {
-						allText += child;
+						allText += child.trim();
 					}
 				} else if (child != null && "content" in child) {
-					console.log(child);
-
-					if ("content" in child) {
-						child.content.forEach((childNode) => {
-							walk(childNode);
-						});
-					}
+					child.content.forEach((childNode) => {
+						walk(childNode);
+					});
+				} else {
+					walk(child);
 				}
-
-				walk(child);
 			});
 		}
 	}

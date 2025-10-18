@@ -2,6 +2,20 @@
 	font-family: "OpenRunde";
 	font-style: normal;
 	font-weight: 400;
+	src: url("../static/font/OpenRunde-400.otf") format("otf");
+}
+
+@font-face {
+	font-family: "OpenRunde";
+	font-style: normal;
+	font-weight: 600;
+	src: url("../static/font/OpenRunde-600.otf") format("otf");
+}
+
+@font-face {
+	font-family: "OpenRunde";
+	font-style: normal;
+	font-weight: 400;
 	font-display: swap;
 	src: url("../static/font/OpenRunde-400.woff2") format("woff2");
 }
@@ -58,13 +72,23 @@
 
 	:where(*) {
 		margin: 0;
+		text-box-trim: trim-both;
+	}
+
+	*:where(:is(h1, h2, h3, h4, h5, h6)) {
+		text-wrap: balance;
+		font-size: inherit;
+	}
+
+	*:where(:is(p, li, blockquote, dd, dt, figcaption, caption, summary, label)) {
+		text-wrap: pretty;
+		letter-spacing: -0.02em;
 	}
 
 	*:where(
 			:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)
 		) {
-		display: revert;
-		font-family: revert;
+		font-family: inherit;
 	}
 
 	/* Preferred box-sizing value */
