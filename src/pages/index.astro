@@ -12,13 +12,6 @@ const meMobileAvif = await getImage({
 	height: 160,
 	densities: [1, 1.5],
 });
-const meMobileWebp = await getImage({
-	src: me,
-	format: "webp",
-	width: 160,
-	height: 160,
-	densities: [1, 1.5],
-});
 const meDesktopAvif = await getImage({
 	src: me,
 	format: "avif",
@@ -26,13 +19,7 @@ const meDesktopAvif = await getImage({
 	height: 280,
 	densities: [1, 1.5],
 });
-const meDesktopWebp = await getImage({
-	src: me,
-	format: "webp",
-	width: 280,
-	height: 280,
-	densities: [1, 1.5],
-});
+
 const meFallback = await getImage({
 	src: me,
 	format: "jpg",
@@ -56,11 +43,9 @@ const skills = [
 
 <MainLayout>
 	<main class="mx-auto w-full max-w-5xl flex-1 px-6 pb-12 pt-16 md:pt-24">
-		<!-- Hero Section -->
 		<section
 			class="grid grid-cols-[auto_1fr] gap-x-6 gap-y-8 lg:grid-cols-[1fr_240px] lg:gap-12"
 		>
-			<!-- Profile Photo - appears on left on mobile, right on desktop -->
 			<Link
 				roundRadius="full"
 				class="block flex-shrink-0 rounded-full leading-0 transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black focus-visible:ring-offset-2 lg:col-start-2 lg:row-span-4 lg:row-start-1 lg:self-start lg:justify-self-center"
@@ -75,19 +60,9 @@ const skills = [
 						type="image/avif"
 					/>
 					<source
-						srcset={meMobileWebp.srcSet.attribute}
-						media="(max-width: 1023px)"
-						type="image/webp"
-					/>
-					<source
 						srcset={meDesktopAvif.srcSet.attribute}
 						media="(min-width: 1024px)"
 						type="image/avif"
-					/>
-					<source
-						srcset={meDesktopWebp.srcSet.attribute}
-						media="(min-width: 1024px)"
-						type="image/webp"
 					/>
 					<img
 						id="me-photo"
@@ -103,7 +78,6 @@ const skills = [
 				</picture>
 			</Link>
 
-			<!-- Name and Title -->
 			<div class="col-start-2 lg:col-start-1">
 				<h1 class="text-3xl text-black md:text-4xl" itemprop="name">
 					<span class="font-semibold" itemprop="givenName">Sergei</span>
@@ -114,7 +88,6 @@ const skills = [
 				</p>
 			</div>
 
-			<!-- Introduction -->
 			<p
 				class="col-span-2 text-lg leading-relaxed text-gray-600 md:text-xl lg:col-span-1"
 			>
@@ -124,7 +97,6 @@ const skills = [
 				revenue-generating features.
 			</p>
 
-			<!-- Skills -->
 			<div class="col-span-2 space-y-4 lg:col-span-1">
 				<h2 class="text-sm font-semibold uppercase tracking-wide text-gray-600">
 					Expertise
@@ -140,7 +112,6 @@ const skills = [
 				</div>
 			</div>
 
-			<!-- CTA Section -->
 			<div class="col-span-2 flex flex-col gap-4 sm:flex-row lg:col-span-1">
 				<Link
 					href="mailto:job@garin.dev"
@@ -184,7 +155,6 @@ const skills = [
 				</Link>
 			</div>
 
-			<!-- Social Links -->
 			<div class="col-span-2 border-t border-gray-300 pt-8 lg:col-span-1">
 				<div class="flex flex-wrap gap-8">
 					<Link
@@ -232,7 +202,6 @@ const skills = [
 		</section>
 	</main>
 
-	<!-- Footer -->
 	<footer class="w-full border-t border-gray-300 bg-gray-100 px-6 py-4">
 		<p class="pb-safe text-center text-sm text-gray-600">
 			© {new Date().getFullYear()} Sergei Garin

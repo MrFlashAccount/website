@@ -36,6 +36,14 @@ export async function extractCharsFromHtml(pathnames, filter = () => true) {
 					if (filter(node) && !IGNORED_TAGS.includes(node.tag)) {
 						allText += child;
 					}
+				} else if (child != null && "content" in child) {
+					console.log(child);
+
+					if ("content" in child) {
+						child.content.forEach((childNode) => {
+							walk(childNode);
+						});
+					}
 				}
 
 				walk(child);
