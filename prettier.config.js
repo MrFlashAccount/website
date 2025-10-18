@@ -10,14 +10,8 @@ const config = {
 	tailwindFunctions: ["twMerge", "tw", "twJoin"],
 	plugins: ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
 	overrides: [
-		{
-			files: [".*", "*.md", "*.toml", "*.yml"],
-			options: { useTabs: false },
-		},
-		{
-			files: "*.astro",
-			options: { parser: "astro" },
-		},
+		{ files: [".*", "*.md", "*.toml", "*.yml"], options: { useTabs: false } },
+		{ files: "*.astro", options: { parser: "astro" } },
 	],
 };
 

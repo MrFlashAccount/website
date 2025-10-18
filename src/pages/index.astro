@@ -8,23 +8,25 @@ import MainLayout from "../layouts/main.astro";
 const meMobileAvif = await getImage({
 	src: me,
 	format: "avif",
-	width: 160,
-	height: 160,
+	width: 80,
+	height: 80,
+	quality: 80,
 	densities: [1, 1.5],
 });
 const meDesktopAvif = await getImage({
 	src: me,
 	format: "avif",
-	width: 280,
-	height: 280,
+	width: 240,
+	height: 240,
 	densities: [1, 1.5],
+	quality: 80,
 });
-
 const meFallback = await getImage({
 	src: me,
 	format: "jpg",
-	width: 160,
-	height: 160,
+	width: 240,
+	height: 240,
+	quality: 80,
 });
 
 const skills = [
@@ -67,7 +69,6 @@ const skills = [
 						type="image/avif"
 					/>
 					<img
-						id="me-photo"
 						class="pointer-events-none h-20 w-20 rounded-full border border-gray-300 object-cover md:h-24 md:w-24 lg:h-60 lg:w-60"
 						src={meFallback.src}
 						alt=""

@@ -1,5 +1,0 @@
-[[headers]]
-  for = "/_astro*"
-
-  [headers.values]
-    Cache-Control = "public, immutable, max-age=31536000"
