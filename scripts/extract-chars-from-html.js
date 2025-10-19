@@ -31,19 +31,20 @@ export async function extractCharsFromHtml(pathnames, filter = () => true) {
 			allText += node.trim();
 		} else if (node.content) {
 			node.content.forEach((child) => {
-				if (typeof child === "string") {
-					if (DYNAMIC_TAGS.includes(node.tag)) {
-						throw new Error(`Found dynamic tag "${node.tag}" in HTML.`);
-					}
+				if (typeof child === "string" && filter(node)) {
+					allText += child.trim();
+					return;
+				}
 
-					if (filter(node) && !IGNORED_TAGS.includes(node.tag)) {
-						allText += child.trim();
-					}
-				} else if (child != null && "content" in child) {
-					child.content.forEach((childNode) => {
-						walk(childNode);
-					});
-				} else {
+				if (DYNAMIC_TAGS.includes(child?.tag?.toLowerCase())) {
+					throw new Error(`Found dynamic tag "${child?.tag}" in HTML.`);
+				}
+
+				if (IGNORED_TAGS.includes(child?.tag?.toLowerCase())) {
+					return;
+				}
+
+				if (child != null && child.content != null) {
 					walk(child);
 				}
 			});
