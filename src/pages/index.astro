@@ -4,6 +4,7 @@ import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "../../tailwind.config.js";
 
 import me from "../static/me_cropped.jpg";
+import meJXL from "../static/me_cropped.jxl";
 import meOriginal from "../static/me.jpg?url";
 import Link from "../components/link.astro";
 import MainLayout from "../layouts/main.astro";
@@ -17,9 +18,21 @@ const meMobileAvif = await getImage({
 	height: 80,
 	densities: [1, 2, 3],
 });
+const meMobileJXL = await getImage({
+	src: meJXL,
+	width: 80,
+	height: 80,
+	densities: [1, 2, 3],
+});
 const meDesktopAvif = await getImage({
 	src: me,
 	format: "avif",
+	width: 320,
+	height: 320,
+	densities: [1, 1.5],
+});
+const meDesktopJXL = await getImage({
+	src: meJXL,
 	width: 320,
 	height: 320,
 	densities: [1, 1.5],
@@ -31,7 +44,12 @@ const meScaledAvif = await getImage({
 	height: 360,
 	densities: [1, 2, 3],
 });
-
+const meScaledJXL = await getImage({
+	src: meJXL,
+	width: 360,
+	height: 360,
+	densities: [1, 2, 3],
+});
 const meFallback = await getImage({
 	src: me,
 	format: "jpg",
@@ -68,6 +86,16 @@ const skills = [
 			>
 				<picture class="contents">
 					<source
+						srcset={meDesktopJXL.srcSet.attribute}
+						media={`(min-width: ${fullConfig.theme.screens.lg})`}
+						type="image/jxl"
+					/>
+					<source
+						srcset={meMobileJXL.srcSet.attribute}
+						media={`(min-width: ${fullConfig.theme.screens.sm})`}
+						type="image/jxl"
+					/>
+					<source
 						srcset={meDesktopAvif.srcSet.attribute}
 						media={`(min-width: ${fullConfig.theme.screens.lg})`}
 						type="image/avif"
@@ -88,6 +116,11 @@ const skills = [
 						decoding="async"
 					/>
 					<template>
+						<source
+							srcset={meScaledJXL.srcSet.attribute}
+							media="(min-width: 0px)"
+							type="image/jxl"
+						/>
 						<source
 							srcset={meScaledAvif.srcSet.attribute}
 							media="(min-width: 0px)"
