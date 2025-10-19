@@ -1,5 +1,5 @@
 /
   Cache-Control: public, max-age=3600
 
-/_s/*
+/s/*
   Cache-Control: public, immutable, max-age=31536000
