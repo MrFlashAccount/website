@@ -94,22 +94,20 @@ const skills = [
 						/>
 					</template>
 					<script is:inline>
-						const abortController = new AbortController();
-						const picture = document.currentScript.parentNode;
-						const template = picture.querySelector("template");
+						const a = new AbortController();
+						const p = document.currentScript.parentNode;
+						const t = p.querySelector("template");
 
-						if (picture instanceof HTMLPictureElement) {
+						if (p != null) {
 							visualViewport.addEventListener(
 								"resize",
 								() => {
-									const scale = visualViewport.scale;
-
-									if (scale > 2) {
-										picture.prepend(template.content);
-										abortController.abort();
+									if (visualViewport.scale > 2) {
+										p.prepend(t.content);
+										a.abort();
 									}
 								},
-								{ passive: true, signal: abortController.signal },
+								{ signal: a.signal },
 							);
 						}
 					</script>

@@ -10,7 +10,26 @@ export default defineConfig({
 	outDir: "./public",
 	publicDir: "./src/public/",
 	site: "https://garin.dev",
-	vite: { build: { assetsInlineLimit: 0 } },
+	vite: {
+		build: {
+			assetsInlineLimit: 0,
+			rollupOptions: {
+				output: {
+					assetFileNames: (chunkInfo) => {
+						const fontExts = [".otf", ".woff2"];
+						if (
+							chunkInfo.names.some((name) =>
+								fontExts.some((ext) => name.endsWith(ext)),
+							)
+						) {
+							return "s/[name].[hash:1][extname]";
+						}
+						return "s/[hash:1][extname]";
+					},
+				},
+			},
+		},
+	},
 	adapter: {
 		name: "minify",
 		hooks: {
@@ -25,8 +44,8 @@ export default defineConfig({
 						(node) => !node.attrs?.class?.includes("font-semibold"),
 					).then((chars) =>
 						minifyFont(chars, {
-							src: dir.pathname + "_astro/*-400*.otf",
-							dest: dir.pathname + "_astro/",
+							src: dir.pathname + "s/*-400*.otf",
+							dest: dir.pathname + "s/",
 						}),
 					),
 					extractCharsFromHtml(
@@ -34,8 +53,8 @@ export default defineConfig({
 						(node) => !!node.attrs?.class?.includes("font-semibold"),
 					).then((chars) =>
 						minifyFont(chars, {
-							src: dir.pathname + "_astro/*-600*.otf",
-							dest: dir.pathname + "_astro/",
+							src: dir.pathname + "s/*-600*.otf",
+							dest: dir.pathname + "s/",
 						}),
 					),
 					minifyHtml(paths),

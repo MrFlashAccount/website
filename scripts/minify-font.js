@@ -20,7 +20,7 @@ export async function minifyFont(letters, options) {
 			.src(src)
 			.dest(dest)
 			.use(Fontmin.otf2ttf())
-			.use(Fontmin.glyph({ text: letters + "0123456789", hinting: false }))
+			.use(Fontmin.glyph({ text: letters + "20567", hinting: false }))
 			.use(Fontmin.ttf2woff2())
 			.use(
 				rename((path) => {

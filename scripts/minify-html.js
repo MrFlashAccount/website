@@ -19,6 +19,7 @@ export async function minifyHtml(pathnames) {
 				htmlnano({
 					collapseAttributeWhitespace: true,
 					collapseBooleanAttributes: { amphtml: false },
+					removeOptionalTags: true,
 					collapseWhitespace: "aggressive",
 					deduplicateAttributeValues: true,
 					normalizeAttributeValues: true,
