@@ -1,8 +1,9 @@
 import { readFileSync, writeFileSync } from "node:fs";
+import { transformSync as esbuildTransform } from "esbuild";
 import posthtml from "posthtml";
 import minifyClassnames from "posthtml-minify-classnames";
 import htmlnano from "htmlnano";
-import { transform } from "lightningcss";
+import { transform as lightningcssTransform } from "lightningcss";
 
 /**
  * @param {string[]} pathnames
@@ -35,7 +36,7 @@ export async function minifyHtml(pathnames) {
 			.use((tree) =>
 				tree.match({ tag: "style" }, (node) => {
 					if (node.content) {
-						const { code } = transform({
+						const { code } = lightningcssTransform({
 							filename: "",
 							code: Buffer.from(node.content[0]),
 							minify: true,
@@ -44,6 +45,16 @@ export async function minifyHtml(pathnames) {
 						node.content[0] = code.toString();
 					}
 
+					return node;
+				}),
+			)
+			.use(async (tree) =>
+				tree.match({ tag: "script" }, (node) => {
+					if (node.content) {
+						node.content[0] = esbuildTransform(node.content[0], {
+							minify: true,
+						}).code;
+					}
 					return node;
 				}),
 			)
