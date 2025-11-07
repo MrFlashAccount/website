@@ -1,4 +1,5 @@
 ---
+import postcss from "postcss";
 import css from "../styles/global.css?inline";
 import svgFavicon from "../static/favicon.svg?url";
 import pngFavicon from "../static/favicon.png?url";
@@ -7,6 +8,32 @@ import appleTouchIcon from "../static/apple-touch-icon.png?url";
 
 const favicon =
 	process.env.NODE_ENV === "production" ? svgFavicon : svgDevFavicon;
+
+const result = await postcss().process(css, {
+	from: undefined,
+	to: undefined,
+});
+
+// Extract CSS by media query
+const cssByMediaQuery = new Map<string, string>();
+
+result.root.walkAtRules("media", (node) => {
+	const mediaQuery = node.params;
+	const cssContent = node.toString();
+
+	cssByMediaQuery.set(mediaQuery, cssContent);
+
+	node.remove();
+});
+result.root.walkAtRules("font-face", (node) => {
+	node.walkDecls("src", (decl) => {
+		if (decl.value.includes(".otf")) {
+			node.remove();
+		}
+	})
+})
+
+const baseCSSString = result.root.toString();
 ---
 
 <html
@@ -33,7 +60,12 @@ const favicon =
 		<meta property="og:description" content="My contacts and cv" />
 		<meta property="og:locale" content="en" />
 		<meta property="og:site_name" content="Sergei Garin" />
-		<style set:html={css}></style>
+		<style set:html={baseCSSString}></style>
+		{
+			Array.from(cssByMediaQuery.entries()).map(([query, css]) => (
+				<style set:html={css} media={query} />
+			))
+		}
 	</head>
 	<body class="flex min-h-full flex-1 flex-shrink-0 flex-col">
 		<slot />
