@@ -17,7 +17,6 @@ const config = {
 			"4xl": ["36px", "44px"],
 		},
 		screens: {
-			sm: "320px",
 			md: "640px",
 			lg: "860px",
 		},
