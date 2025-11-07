@@ -75,24 +75,22 @@
 		text-box-trim: trim-both;
 	}
 
-	*:where(:is(h1, h2, h3, h4, h5, h6)) {
+	*:where(:is(h1, h2)) {
 		text-wrap: balance;
 		font-size: inherit;
 	}
 
-	*:where(:is(p, li, blockquote, dd, dt, figcaption, caption, summary, label)) {
+	*:where(:is(p)) {
 		text-wrap: pretty;
 		letter-spacing: -0.02em;
 	}
 
-	*:where(
-			:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)
-		) {
+	*:where(:not(html, img, svg):not(svg *)) {
 		font-family: inherit;
 	}
 
 	/* Preferred box-sizing value */
-	:where(:is(*, *:before, *:after)) {
+	:where(:is(*)) {
 		border: 0 solid;
 		box-sizing: border-box;
 	}
