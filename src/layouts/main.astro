@@ -19,7 +19,7 @@ const cssByMediaQuery = new Map<string, string>();
 
 result.root.walkAtRules("media", (node) => {
 	const mediaQuery = node.params;
-	const cssContent = node.toString();
+	const cssContent = node.nodes.map((node) => node.toString()).join("\n");
 
 	cssByMediaQuery.set(mediaQuery, cssContent);
 
@@ -30,8 +30,8 @@ result.root.walkAtRules("font-face", (node) => {
 		if (decl.value.includes(".otf")) {
 			node.remove();
 		}
-	})
-})
+	});
+});
 
 const baseCSSString = result.root.toString();
 ---
