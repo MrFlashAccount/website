@@ -1,7 +1,12 @@
 /
   Cache-Control: public, max-age=3600
-  Link: </s/OpenRunde-400.C.woff2>; rel=preload; as=font; type=font/woff2; crossorigin; fetchpriority="high"
-  Link: </s/OpenRunde-600.D.woff2>; rel=preload; as=font; type=font/woff2; crossorigin; fetchpriority="high"
+  Link: </s/OpenRunde-400.*.woff2>; rel=preload; as=font; type=font/woff2; crossorigin; fetchpriority="high"
+  Link: </s/OpenRunde-600.*.woff2>; rel=preload; as=font; type=font/woff2; crossorigin; fetchpriority="high"
+  Link: </s/*.css>; rel=preload; as=style; type=text/css; fetchpriority="high" crossorigin;
+  !report-to
+  !server
 
 /s/*
   Cache-Control: public, immutable, max-age=31536000
+  !report-to
+  !server
