@@ -60,7 +60,7 @@ const skills = [
 			class="grid grid-cols-[auto_1fr] gap-x-6 gap-y-8 lg:grid-cols-[1fr_240px] lg:gap-12"
 		>
 			<Link
-				class="flex rounded-full transition-transform hover:[transform:scale(1.05)] lg:col-start-2 lg:row-span-4 lg:row-start-1 lg:self-start lg:justify-self-center"
+				class="flex rounded-full transition-transform [corner-shape:superellipse(1.2)] hover:[transform:scale(1.05)] lg:col-start-2 lg:row-span-4 lg:row-start-1 lg:self-start lg:justify-self-center"
 				target="_blank"
 				href={meOriginal}
 				title="View full photo"
@@ -77,7 +77,7 @@ const skills = [
 						type="image/avif"
 					/>
 					<img
-						class="pointer-events-none h-20 w-20 rounded-full object-cover md:h-24 md:w-24 lg:h-60 lg:w-60"
+						class="pointer-events-none h-20 w-20 rounded-full object-cover [corner-shape:superellipse(1.2)] md:h-24 md:w-24 lg:h-60 lg:w-60"
 						src={meFallback.src}
 						alt=""
 						loading="eager"
@@ -134,7 +134,7 @@ const skills = [
 				<div class="flex flex-wrap gap-2">
 					{
 						skills.map((skill) => (
-							<span class="rounded-full border border-gray-300 bg-white px-4 py-2  text-black">
+							<span class="rounded-full border border-gray-300 bg-white px-4 py-2 text-black  [corner-shape:superellipse(1.2)]">
 								{skill}
 							</span>
 						))
@@ -146,7 +146,7 @@ const skills = [
 				<Link
 					href="mailto:job@garin.dev"
 					itemProp="email"
-					class="flex items-center justify-center gap-2 rounded-full bg-black px-6 py-4 text-white no-underline transition-colors hover:bg-black/80 hover:text-white"
+					class="flex items-center justify-center gap-2 rounded-full bg-black px-6 py-4 text-white no-underline transition-colors [corner-shape:superellipse(1.2)] hover:bg-black/80 hover:text-white"
 				>
 					Get in touch
 					<svg stroke="currentColor" class="h-5 w-5" viewBox="0 0 24 24"
@@ -158,7 +158,7 @@ const skills = [
 				<Link
 					href="/cv.pdf"
 					download="Sergei Garin CV.pdf"
-					class="flex items-center justify-center gap-2 rounded-full border border-black bg-white px-6 py-4 text-black no-underline"
+					class="flex items-center justify-center gap-2 rounded-full border border-black bg-white px-6 py-4 text-black no-underline [corner-shape:superellipse(1.2)]"
 				>
 					Download CV
 					<svg
