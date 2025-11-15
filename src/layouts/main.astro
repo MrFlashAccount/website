@@ -48,7 +48,16 @@ const baseCSSString = result.root.toString();
 			name="viewport"
 			content="width=device-width, initial-scale=1, shrink-to-fit=no"
 		/>
-		<meta name="theme-color" content="rgba(0, 0, 0, 0.8)" />
+		<meta
+			name="theme-color"
+			media="(prefers-color-scheme: dark)"
+			content="rgba(0, 0, 0, 0.8)"
+		/>
+		<meta
+			name="theme-color"
+			media="(prefers-color-scheme: light)"
+			content="rgba(255, 255, 255, 0.8)"
+		/>
 		<title>Sergei Garin</title>
 		<meta name="description" content="My contacts and cv" />
 		<link itemprop="url" href="https://garin.dev" />
