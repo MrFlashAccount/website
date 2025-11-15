@@ -68,6 +68,28 @@
 			OpenRunde Fallback,
 			serif;
 		line-height: 1.5;
+		color-scheme: dark light;
+		background-color: white;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		* {
+			transition-duration: 0.01ms !important;
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-delay: 0ms !important;
+			animation-delay: 0ms !important;
+		}
+	}
+
+	@media (prefers-color-scheme: dark) {
+		:where(html) {
+			filter: invert(90%) hue-rotate(180deg) brightness(1.2);
+		}
+
+		:where(:is(img, picture, video, canvas)) {
+			filter: invert(90%) hue-rotate(180deg) brightness(1.2);
+		}
 	}
 
 	:where(*) {

@@ -28,6 +28,7 @@ const config = {
 			lineHeight: { 0: "0" },
 		},
 	},
+	darkMode: "media",
 	corePlugins: {
 		preflight: false,
 		filter: false,
