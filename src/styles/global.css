@@ -70,7 +70,6 @@
 		line-height: 1.5;
 		color-scheme: dark light;
 	}
-	
 
 	@media (prefers-reduced-motion: reduce) {
 		* {
@@ -83,10 +82,11 @@
 	}
 
 	@media (prefers-color-scheme: dark) {
-		:where(body) {
-			filter: invert(90%) hue-rotate(180deg) brightness(1.2);
+		:where(body:not(:is(img, picture, video, canvas))) {
+			filter: invert(100%) hue-rotate(180deg) brightness(1.4);
 		}
 
+		/* Invert to normal color images, pictures, videos, and canvases */
 		:where(:is(img, picture, video, canvas)) {
 			filter: invert(90%) hue-rotate(180deg) brightness(1.2);
 		}
