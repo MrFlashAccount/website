@@ -9,7 +9,7 @@
 	],
 	"scripts": {
 		"start": "npm run dev",
-		"dev": "astro dev",
+		"dev": "astro dev --host",
 		"build": "astro build",
 		"preview": "astro preview",
 		"spelling": "npx yaspeller en -e astro ./src/pages"
