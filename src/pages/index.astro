@@ -60,10 +60,10 @@ const links = [
 
 <MainLayout>
 	<main
-		class="flex min-h-[100dvh] w-full items-center overflow-x-hidden bg-[#eee9df] px-0 py-0 text-[#f5f0e8] md:px-4 md:py-5"
+		class="flex min-h-[100dvh] w-full items-center overflow-x-hidden bg-[#eee9df] p-3 text-[#f5f0e8] sm:p-4 md:px-4 md:py-5"
 	>
 		<section
-			class="relative mx-auto grid min-h-[100dvh] w-full min-w-0 max-w-full overflow-hidden bg-[#11100e] px-5 py-7 [corner-shape:superellipse(1.35)] md:min-h-[min(720px,calc(100dvh-4rem))] md:rounded-[2.5rem] md:px-12 md:py-11 md:shadow-[0_22px_70px_rgba(43,35,24,0.22)] lg:min-h-[640px] lg:max-w-6xl lg:px-16 lg:py-14"
+			class="relative isolate mx-auto grid min-h-[calc(100dvh-1.5rem)] w-full min-w-0 max-w-full overflow-hidden rounded-[1.65rem] bg-[#11100e] px-5 py-7 [corner-shape:superellipse(1.35)] sm:min-h-[calc(100dvh-2rem)] sm:rounded-[2rem] md:min-h-[min(720px,calc(100dvh-4rem))] md:rounded-[2.5rem] md:px-12 md:py-11 md:shadow-[0_22px_70px_rgba(43,35,24,0.22)] lg:min-h-[640px] lg:max-w-6xl lg:px-16 lg:py-14"
 			aria-labelledby="identity-title"
 		>
 			<picture class="pointer-events-none absolute inset-0 block">
@@ -74,7 +74,7 @@ const links = [
 				/>
 				<source srcset={portraitMobile.srcSet.attribute} type="image/avif" />
 				<img
-					class="absolute bottom-0 right-[-8%] h-[66%] max-h-none w-auto max-w-none object-contain opacity-[0.34] md:right-[-2%] md:h-[92%] md:opacity-45 lg:right-[4%] lg:h-[108%] lg:opacity-60"
+					class="absolute bottom-0 right-[-8%] h-[66%] max-h-none w-auto max-w-none object-contain opacity-[0.34] saturate-[0.88] drop-shadow-[0_30px_55px_rgba(0,0,0,0.24)] md:right-[-2%] md:h-[92%] md:opacity-45 lg:right-[4%] lg:h-[108%] lg:opacity-60"
 					src={portraitFallback.src}
 					alt="Portrait of Sergei Garin"
 					width={portraitFallback.attributes.width}
@@ -128,7 +128,7 @@ const links = [
 										rel={link.rel}
 										itemProp={link.itemProp}
 										download={link.download}
-										class="identity-link rounded-[0.35rem] px-1 py-0.5 text-[#f5ecdc] no-underline decoration-transparent underline-offset-4 transition-[color,text-decoration-color,transform] duration-200 hover:text-white hover:decoration-[#f5ecdc] focus-visible:ring-[#f5ecdc] focus-visible:ring-offset-[#11100e] active:translate-y-px"
+										class="identity-link rounded-[0.35rem] px-1 py-0.5 text-[#f5ecdc] no-underline decoration-transparent underline-offset-4 transition-[color,text-decoration-color,transform] duration-200 hover:-translate-y-px hover:text-white hover:underline hover:decoration-[#f5ecdc] focus-visible:ring-[#f5ecdc] focus-visible:ring-offset-[#11100e] active:translate-y-0"
 									>
 										{link.label}
 									</Link>
