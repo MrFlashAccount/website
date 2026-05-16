@@ -40,7 +40,7 @@ const baseCSSString = result.root.toString();
 	lang="en"
 	itemtype="https://schema.org/Person"
 	itemscope
-	class="flex h-[100dvh] min-w-[320px] flex-col"
+	class="flex min-h-[100dvh] min-w-[320px] flex-col bg-[#eee9df]"
 >
 	<head>
 		<meta charset="utf-8" />
@@ -51,22 +51,28 @@ const baseCSSString = result.root.toString();
 		<meta
 			name="theme-color"
 			media="(prefers-color-scheme: dark)"
-			content="rgba(0, 0, 0, 0.8)"
+			content="#11100e"
 		/>
 		<meta
 			name="theme-color"
 			media="(prefers-color-scheme: light)"
-			content="rgba(255, 255, 255, 0.8)"
+			content="#eee9df"
 		/>
 		<title>Sergei Garin</title>
-		<meta name="description" content="My contacts and cv" />
+		<meta
+			name="description"
+			content="Frontend engineer for sharp, reliable product interfaces."
+		/>
 		<link itemprop="url" href="https://garin.dev" />
 		<link rel="icon" href={pngFavicon} />
 		<link rel="icon" href={favicon} type="image/svg+xml" />
 		<link rel="apple-touch-icon" href={appleTouchIcon} />
 		<meta name="author" content="Sergei Garin" />
 		<meta property="og:title" content="Sergei Garin" />
-		<meta property="og:description" content="My contacts and cv" />
+		<meta
+			property="og:description"
+			content="Frontend engineer for sharp, reliable product interfaces."
+		/>
 		<meta property="og:locale" content="en" />
 		<meta property="og:site_name" content="Sergei Garin" />
 		<style set:html={baseCSSString}></style>

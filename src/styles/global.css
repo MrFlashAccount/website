@@ -66,9 +66,9 @@
 		font-family:
 			OpenRunde,
 			OpenRunde Fallback,
-			serif;
+			sans-serif;
 		line-height: 1.5;
-		color-scheme: dark light;
+		color-scheme: light;
 	}
 
 	@media (prefers-reduced-motion: reduce) {
@@ -78,17 +78,6 @@
 			animation-iteration-count: 1 !important;
 			transition-delay: 0ms !important;
 			animation-delay: 0ms !important;
-		}
-	}
-
-	@media (prefers-color-scheme: dark) {
-		:where(body:not(:is(img, picture, video, canvas))) {
-			filter: invert(100%) hue-rotate(180deg) brightness(1.2);
-		}
-
-		/* Invert to normal color images, pictures, videos, and canvases */
-		:where(:is(img, picture, video, canvas)) {
-			filter: invert(90%) hue-rotate(180deg) brightness(1.2);
 		}
 	}
 
