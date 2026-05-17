@@ -96,34 +96,40 @@ const links = [
 		class="min-h-[100dvh] w-full overflow-x-hidden bg-[#080807] text-[#f5f0e8]"
 	>
 		<section
-			class="pb-safe xl:px-20 relative isolate mx-auto min-h-[100dvh] w-full max-w-[1240px] overflow-hidden px-6 py-8 sm:px-8 md:px-12 md:py-10 lg:px-16 lg:py-14"
+			class="pb-safe xl:px-20 relative isolate mx-auto flex min-h-[100dvh] w-full max-w-[1240px] flex-col overflow-hidden px-6 py-8 sm:px-8 md:px-12 md:py-10 lg:block lg:px-16 lg:py-14"
 			aria-labelledby="identity-title"
 		>
-			<picture
-				class="pointer-events-none absolute inset-x-0 top-0 block lg:hidden"
-				aria-hidden="true"
-				data-zoom-picture
-				data-zoom-threshold="2.25"
-			>
-				<source srcset={portraitMobile.srcSet.attribute} type="image/avif" />
-				<source
-					srcset={portraitMobileFallback.srcSet.attribute}
-					type="image/jpeg"
-				/>
-				<img
-					class="absolute right-[-18%] top-[-0.5rem] h-[46dvh] min-h-[19rem] w-auto max-w-none object-contain object-top opacity-[0.88] brightness-[1.1] contrast-[1.02] saturate-[0.9] sm:right-[-8%] sm:h-[49dvh] md:right-[-2%] md:h-[53dvh]"
-					src={portraitMobileFallback.src}
-					alt=""
-					width={portraitMobileFallback.attributes.width}
-					height={portraitMobileFallback.attributes.height}
-					loading="eager"
-					decoding="async"
-				/>
-				<template>
-					<source srcset={portraitMobileZoom.src} type="image/avif" />
-					<source srcset={portraitMobileZoomFallback.src} type="image/jpeg" />
-				</template>
-			</picture>
+			<div class="relative z-10 -mx-6 -mt-8 block overflow-hidden sm:-mx-8 md:-mx-12 lg:hidden">
+				<picture
+					class="pointer-events-none block"
+					aria-hidden="true"
+					data-zoom-picture
+					data-zoom-threshold="2.25"
+				>
+					<source srcset={portraitMobile.srcSet.attribute} type="image/avif" />
+					<source
+						srcset={portraitMobileFallback.srcSet.attribute}
+						type="image/jpeg"
+					/>
+					<img
+						class="block h-auto w-full object-cover object-top opacity-[0.96] brightness-[1.08] contrast-[1.02] saturate-[0.92] [mask-image:linear-gradient(180deg,#000_0%,#000_84%,rgba(0,0,0,0.88)_92%,transparent_100%)] [-webkit-mask-image:linear-gradient(180deg,#000_0%,#000_84%,rgba(0,0,0,0.88)_92%,transparent_100%)]"
+						src={portraitMobileFallback.src}
+						alt=""
+						width={portraitMobileFallback.attributes.width}
+						height={portraitMobileFallback.attributes.height}
+						loading="eager"
+						decoding="async"
+					/>
+					<template>
+						<source srcset={portraitMobileZoom.src} type="image/avif" />
+						<source srcset={portraitMobileZoomFallback.src} type="image/jpeg" />
+					</template>
+				</picture>
+				<div
+					class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-[linear-gradient(180deg,rgba(8,8,7,0)_0%,rgba(8,8,7,0.52)_58%,#080807_100%)]"
+					aria-hidden="true"
+				></div>
+			</div>
 
 			<picture
 				class="pointer-events-none absolute inset-0 hidden lg:block"
@@ -137,7 +143,7 @@ const links = [
 					type="image/jpeg"
 				/>
 				<img
-					class="xl:right-[4%] absolute bottom-[-2%] right-[1%] top-auto h-[104%] w-auto max-w-none object-contain opacity-[0.94] brightness-[1.14] contrast-[1.03] saturate-[0.92]"
+					class="xl:right-[4%] absolute bottom-[-2%] right-[1%] top-auto h-[104%] w-auto max-w-none object-contain opacity-[0.94] brightness-[1.14] contrast-[1.03] saturate-[0.92] [mask-image:linear-gradient(180deg,#000_0%,#000_82%,rgba(0,0,0,0.92)_90%,transparent_100%)] [-webkit-mask-image:linear-gradient(180deg,#000_0%,#000_82%,rgba(0,0,0,0.92)_90%,transparent_100%)]"
 					src={portraitDesktopFallback.src}
 					alt=""
 					width={portraitDesktopFallback.attributes.width}
@@ -203,13 +209,16 @@ const links = [
 			</script>
 
 			<div
-				class="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,8,7,0)_0%,rgba(8,8,7,0.08)_22%,rgba(8,8,7,0.42)_54%,#080807_82%)] sm:bg-[linear-gradient(180deg,rgba(8,8,7,0)_0%,rgba(8,8,7,0.12)_26%,rgba(8,8,7,0.44)_56%,#080807_80%)] lg:bg-[linear-gradient(90deg,#080807_0%,rgba(8,8,7,0.92)_31%,rgba(8,8,7,0.36)_58%,rgba(8,8,7,0)_100%)]"
+				class="absolute inset-0 hidden lg:block lg:bg-[linear-gradient(90deg,#080807_0%,rgba(8,8,7,0.92)_31%,rgba(8,8,7,0.36)_58%,rgba(8,8,7,0)_100%)]"
 				aria-hidden="true"
-			>
-			</div>
+			></div>
+			<div
+				class="pointer-events-none absolute inset-x-[44%] bottom-0 hidden h-[26%] lg:block bg-[linear-gradient(180deg,rgba(8,8,7,0)_0%,rgba(8,8,7,0.18)_30%,rgba(8,8,7,0.82)_74%,#080807_100%)]"
+				aria-hidden="true"
+			></div>
 
 			<div
-				class="relative z-10 flex min-h-[calc(100dvh-4rem)] max-w-[21rem] flex-col justify-end pb-2 pt-[38dvh] sm:max-w-[24rem] sm:pt-[40dvh] md:min-h-[calc(100dvh-5rem)] md:max-w-[31rem] md:pt-[42dvh] lg:min-h-[calc(100dvh-7rem)] lg:max-w-[46rem] lg:justify-center lg:pb-0 lg:pt-0"
+				class="relative z-10 flex max-w-[21rem] flex-1 flex-col pb-2 pt-8 sm:max-w-[24rem] md:max-w-[31rem] md:pt-10 lg:min-h-[calc(100dvh-7rem)] lg:max-w-[46rem] lg:justify-center lg:pb-0 lg:pt-0"
 			>
 				<h1
 					id="identity-title"
@@ -233,7 +242,7 @@ const links = [
 					<span class="whitespace-nowrap">production-ready UI.</span>
 				</p>
 
-				<nav class="mt-7 self-start md:mt-9" aria-label="Contact links">
+				<nav class="mt-auto self-start pt-7 md:pt-9 lg:mt-9 lg:pt-0" aria-label="Contact links">
 					<ul
 						class="flex max-w-[20rem] list-none flex-wrap items-center justify-start border-y border-[#d8cdbc]/20 py-3.5 text-left text-sm font-normal tracking-[-0.015em] text-[#eee4d4] md:max-w-none md:gap-y-3 md:border-0 md:py-0 md:text-base"
 					>
