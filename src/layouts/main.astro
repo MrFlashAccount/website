@@ -5,6 +5,7 @@ import svgFavicon from "../static/favicon.svg?url";
 import pngFavicon from "../static/favicon.png?url";
 import svgDevFavicon from "../static/favicon-dev.svg?url";
 import appleTouchIcon from "../static/apple-touch-icon.png?url";
+import syneLatinVariable from "../static/font/Syne-400-800-latin.woff2?url";
 
 const favicon =
 	process.env.NODE_ENV === "production" ? svgFavicon : svgDevFavicon;
@@ -67,6 +68,14 @@ const baseCSSString = result.root.toString();
 		<link rel="icon" href={pngFavicon} />
 		<link rel="icon" href={favicon} type="image/svg+xml" />
 		<link rel="apple-touch-icon" href={appleTouchIcon} />
+		<link
+			rel="preload"
+			href={syneLatinVariable}
+			as="font"
+			type="font/woff2"
+			crossorigin
+			fetchpriority="high"
+		/>
 		<meta name="author" content="Sergei Garin" />
 		<meta property="og:title" content="Sergei Garin" />
 		<meta

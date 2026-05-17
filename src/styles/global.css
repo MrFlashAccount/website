@@ -1,53 +1,20 @@
 @font-face {
-	font-family: "OpenRunde";
+	font-family: "Syne";
 	font-style: normal;
-	font-weight: 400;
-	src: url("../static/font/OpenRunde-400.otf") format("otf");
-}
-
-@font-face {
-	font-family: "OpenRunde";
-	font-style: normal;
-	font-weight: 600;
-	src: url("../static/font/OpenRunde-600.otf") format("otf");
-}
-
-@font-face {
-	font-family: "OpenRunde";
-	font-style: normal;
-	font-weight: 400;
+	font-weight: 400 800;
 	font-display: swap;
-	src: url("../static/font/OpenRunde-400.woff2") format("woff2");
+	src: url("../static/font/Syne-400-800-latin.woff2") format("woff2");
 }
 
 @font-face {
-	font-family: "OpenRunde Fallback";
+	font-family: "Syne Fallback";
 	font-style: normal;
-	font-weight: 400;
+	font-weight: 400 800;
 	src: local("Arial");
-	ascent-override: 96.88%;
-	descent-override: 24.15%;
+	ascent-override: 92.5%;
+	descent-override: 27.5%;
 	line-gap-override: 0%;
-	size-adjust: 100%;
-}
-
-@font-face {
-	font-family: "OpenRunde";
-	font-style: normal;
-	font-weight: 600;
-	font-display: swap;
-	src: url("../static/font/OpenRunde-600.woff2") format("woff2");
-}
-
-@font-face {
-	font-family: "OpenRunde Fallback";
-	font-style: normal;
-	font-weight: 600;
-	src: local("Arial");
-	ascent-override: 96.88%;
-	descent-override: 24.15%;
-	line-gap-override: 0%;
-	size-adjust: 100%;
+	size-adjust: 96.42%;
 }
 
 @tailwind base;
@@ -64,8 +31,8 @@
 		font-feature-settings: normal;
 		font-variation-settings: normal;
 		font-family:
-			OpenRunde,
-			OpenRunde Fallback,
+			Syne,
+			Syne Fallback,
 			sans-serif;
 		line-height: 1.5;
 		color-scheme: light;
