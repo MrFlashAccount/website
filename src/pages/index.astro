@@ -1,29 +1,62 @@
 ---
 import { getImage } from "astro:assets";
 
-import me from "../static/me.jpg";
+import meDesktop from "../static/me.jpg";
+import meMobile from "../static/me_cropped.jpg";
 import Link from "../components/link.astro";
 import MainLayout from "../layouts/main.astro";
 
 const portraitDesktop = await getImage({
-	src: me,
+	src: meDesktop,
 	format: "avif",
 	width: 760,
 	height: 1060,
 	densities: [1, 1.5],
 });
-const portraitMobile = await getImage({
-	src: me,
-	format: "avif",
-	width: 520,
-	height: 724,
-	densities: [1, 2],
-});
-const portraitFallback = await getImage({
-	src: me,
+const portraitDesktopFallback = await getImage({
+	src: meDesktop,
 	format: "jpg",
 	width: 760,
 	height: 1060,
+	densities: [1, 1.5],
+});
+const portraitDesktopZoom = await getImage({
+	src: meDesktop,
+	format: "avif",
+	width: 1024,
+	height: 1428,
+});
+const portraitDesktopZoomFallback = await getImage({
+	src: meDesktop,
+	format: "jpg",
+	width: 1024,
+	height: 1428,
+});
+const portraitMobile = await getImage({
+	src: meMobile,
+	format: "avif",
+	width: 640,
+	height: 640,
+	densities: [1, 2],
+});
+const portraitMobileFallback = await getImage({
+	src: meMobile,
+	format: "jpg",
+	width: 640,
+	height: 640,
+	densities: [1, 2],
+});
+const portraitMobileZoom = await getImage({
+	src: meMobile,
+	format: "avif",
+	width: 1024,
+	height: 1024,
+});
+const portraitMobileZoomFallback = await getImage({
+	src: meMobile,
+	format: "jpg",
+	width: 1024,
+	height: 1024,
 });
 
 const links = [
@@ -67,34 +100,116 @@ const links = [
 			aria-labelledby="identity-title"
 		>
 			<picture
-				class="pointer-events-none absolute inset-0 block"
+				class="pointer-events-none absolute inset-x-0 top-0 block lg:hidden"
 				aria-hidden="true"
+				data-zoom-picture
+				data-zoom-threshold="2.25"
 			>
-				<source
-					srcset={portraitDesktop.srcSet.attribute}
-					media="(min-width: 860px)"
-					type="image/avif"
-				/>
 				<source srcset={portraitMobile.srcSet.attribute} type="image/avif" />
+				<source
+					srcset={portraitMobileFallback.srcSet.attribute}
+					type="image/jpeg"
+				/>
 				<img
-					class="xl:right-[4%] absolute right-[4%] top-[-1%] h-[48dvh] max-h-[30rem] min-h-[23rem] w-auto max-w-none object-contain opacity-[0.82] brightness-[1.16] contrast-[1.03] saturate-[0.92] sm:right-[2%] sm:h-[54dvh] md:right-[3%] md:h-[64dvh] lg:bottom-[-2%] lg:right-[1%] lg:top-auto lg:h-[104%] lg:max-h-none lg:opacity-[0.94]"
-					src={portraitFallback.src}
+					class="absolute right-[-18%] top-[-0.5rem] h-[46dvh] min-h-[19rem] w-auto max-w-none object-contain object-top opacity-[0.88] brightness-[1.1] contrast-[1.02] saturate-[0.9] sm:right-[-8%] sm:h-[49dvh] md:right-[-2%] md:h-[53dvh]"
+					src={portraitMobileFallback.src}
 					alt=""
-					width={portraitFallback.attributes.width}
-					height={portraitFallback.attributes.height}
+					width={portraitMobileFallback.attributes.width}
+					height={portraitMobileFallback.attributes.height}
 					loading="eager"
 					decoding="async"
 				/>
+				<template>
+					<source srcset={portraitMobileZoom.src} type="image/avif" />
+					<source srcset={portraitMobileZoomFallback.src} type="image/jpeg" />
+				</template>
 			</picture>
 
+			<picture
+				class="pointer-events-none absolute inset-0 hidden lg:block"
+				aria-hidden="true"
+				data-zoom-picture
+				data-zoom-threshold="1.75"
+			>
+				<source srcset={portraitDesktop.srcSet.attribute} type="image/avif" />
+				<source
+					srcset={portraitDesktopFallback.srcSet.attribute}
+					type="image/jpeg"
+				/>
+				<img
+					class="xl:right-[4%] absolute bottom-[-2%] right-[1%] top-auto h-[104%] w-auto max-w-none object-contain opacity-[0.94] brightness-[1.14] contrast-[1.03] saturate-[0.92]"
+					src={portraitDesktopFallback.src}
+					alt=""
+					width={portraitDesktopFallback.attributes.width}
+					height={portraitDesktopFallback.attributes.height}
+					loading="eager"
+					decoding="async"
+				/>
+				<template>
+					<source srcset={portraitDesktopZoom.src} type="image/avif" />
+					<source srcset={portraitDesktopZoomFallback.src} type="image/jpeg" />
+				</template>
+			</picture>
+
+			<script is:inline>
+				const root = document.currentScript?.parentElement;
+				const pictures = Array.from(
+					root?.querySelectorAll("[data-zoom-picture]") ?? [],
+				);
+
+				if (pictures.length > 0) {
+					const abortController = new AbortController();
+					const maybeUpgradePictures = () => {
+						const scale = window.visualViewport?.scale ?? 1;
+						const effectivePixelRatio = (window.devicePixelRatio || 1) * scale;
+
+						for (const picture of pictures) {
+							if (!(picture instanceof HTMLPictureElement)) {
+								continue;
+							}
+
+							const template = picture.querySelector("template");
+							if (!(template instanceof HTMLTemplateElement)) {
+								continue;
+							}
+
+							const threshold = Number(picture.dataset.zoomThreshold || 2);
+							if (effectivePixelRatio < threshold) {
+								continue;
+							}
+
+							picture.prepend(template.content.cloneNode(true));
+							template.remove();
+						}
+
+						if (
+							pictures.every((picture) => !picture.querySelector("template"))
+						) {
+							abortController.abort();
+						}
+					};
+
+					maybeUpgradePictures();
+					window.visualViewport?.addEventListener(
+						"resize",
+						maybeUpgradePictures,
+						{ passive: true, signal: abortController.signal },
+					);
+					window.addEventListener("resize", maybeUpgradePictures, {
+						passive: true,
+						signal: abortController.signal,
+					});
+				}
+			</script>
+
 			<div
-				class="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,8,7,0)_0%,rgba(8,8,7,0.16)_34%,#080807_64%)] sm:bg-[linear-gradient(180deg,rgba(8,8,7,0)_0%,rgba(8,8,7,0.18)_40%,#080807_70%)] lg:bg-[linear-gradient(90deg,#080807_0%,rgba(8,8,7,0.92)_31%,rgba(8,8,7,0.36)_58%,rgba(8,8,7,0)_100%)]"
+				class="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,8,7,0)_0%,rgba(8,8,7,0.08)_22%,rgba(8,8,7,0.42)_54%,#080807_82%)] sm:bg-[linear-gradient(180deg,rgba(8,8,7,0)_0%,rgba(8,8,7,0.12)_26%,rgba(8,8,7,0.44)_56%,#080807_80%)] lg:bg-[linear-gradient(90deg,#080807_0%,rgba(8,8,7,0.92)_31%,rgba(8,8,7,0.36)_58%,rgba(8,8,7,0)_100%)]"
 				aria-hidden="true"
 			>
 			</div>
 
 			<div
-				class="relative z-10 flex min-h-[calc(100dvh-4rem)] max-w-[34rem] flex-col justify-start pb-2 pt-[35dvh] sm:pt-[38dvh] md:min-h-[calc(100dvh-5rem)] md:max-w-[42rem] md:pt-[34dvh] lg:min-h-[calc(100dvh-7rem)] lg:max-w-[46rem] lg:justify-center lg:pb-0 lg:pt-0"
+				class="relative z-10 flex min-h-[calc(100dvh-4rem)] max-w-[21rem] flex-col justify-end pb-2 pt-[38dvh] sm:max-w-[24rem] sm:pt-[40dvh] md:min-h-[calc(100dvh-5rem)] md:max-w-[31rem] md:pt-[42dvh] lg:min-h-[calc(100dvh-7rem)] lg:max-w-[46rem] lg:justify-center lg:pb-0 lg:pt-0"
 			>
 				<h1
 					id="identity-title"
@@ -118,9 +233,9 @@ const links = [
 					<span class="whitespace-nowrap">production-ready UI.</span>
 				</p>
 
-				<nav class="mt-7 md:mt-9" aria-label="Contact links">
+				<nav class="mt-7 self-start md:mt-9" aria-label="Contact links">
 					<ul
-						class="flex max-w-[20rem] list-none flex-wrap items-center border-y border-[#d8cdbc]/20 py-3.5 text-sm font-normal tracking-[-0.015em] text-[#eee4d4] md:max-w-none md:gap-y-3 md:border-0 md:py-0 md:text-base"
+						class="flex max-w-[20rem] list-none flex-wrap items-center justify-start border-y border-[#d8cdbc]/20 py-3.5 text-left text-sm font-normal tracking-[-0.015em] text-[#eee4d4] md:max-w-none md:gap-y-3 md:border-0 md:py-0 md:text-base"
 					>
 						{
 							links.map((link, index) => (
